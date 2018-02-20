@@ -5,6 +5,11 @@
 <html>
 <body>
     <p>hello </p>
+<form action="WebForm1.aspx" method="post" enctype="multipart/form-data">
+	<label for="file">Choose File:</label>
+	<input type="file" name="Project1" />
+	<input type="submit" value="Upload" />
+</form>
 
 </body>
 </html>
