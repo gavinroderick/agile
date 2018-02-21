@@ -210,6 +210,7 @@
     </Content>
     <Content Include="Login.aspx" />
     <Content Include="LoginTest.aspx" />
+    <Content Include="NewProject.aspx" />
     <Content Include="WebForm1.aspx" />
     <Content Include="EditProjectPage.aspx" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -382,6 +383,13 @@
       <DependentUpon>LoginTest.aspx</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="NewProject.aspx.cs">
+      <DependentUpon>NewProject.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NewProject.aspx.designer.cs">
+      <DependentUpon>NewProject.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
@@ -415,6 +423,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Projects\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
