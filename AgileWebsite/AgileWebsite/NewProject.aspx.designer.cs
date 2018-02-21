@@ -31,6 +31,15 @@ namespace AgileWebsite {
         protected global::System.Web.UI.WebControls.TextBox ProjectName;
         
         /// <summary>
+        /// TextBox2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        
+        /// <summary>
         /// File1 control.
         /// </summary>
         /// <remarks>
@@ -47,5 +56,14 @@ namespace AgileWebsite {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputSubmit Submit1;
+        
+        /// <summary>
+        /// SubmitMeBoi control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputSubmit SubmitMeBoi;
     }
 }

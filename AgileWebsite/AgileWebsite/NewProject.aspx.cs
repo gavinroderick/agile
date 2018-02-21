@@ -9,12 +9,30 @@ namespace AgileWebsite
 {
     public partial class NewProject : System.Web.UI.Page
     {
+
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            //Basic validation
+            string MethodName = String.IsNullOrEmpty(Request.QueryString["MethodName"]) ? string.Empty : Request.QueryString["MethodName"];
+            SimpleMethodFactory(MethodName);
         }
 
-        private void Submit1_ServerClick(object sender, System.EventArgs e)
+        protected void SimpleMethodFactory(string MethodName)
+        {
+            switch (MethodName)
+            {
+                case "MyMethod":
+                    //MyMethod();
+                    break;
+                default:
+                    //print cheese  
+                    break;
+            }
+        }
+
+        
+
+        public void MyMethod()
         {
             if ((File1.PostedFile != null) && (File1.PostedFile.ContentLength > 0))
             {
