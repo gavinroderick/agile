@@ -6,19 +6,16 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using MySql.Data.MySqlClient;
 
+
 namespace AgileWebsite
 {
-	public partial class Login : System.Web.UI.Page
-	{
+    public partial class SignIn : System.Web.UI.Page
+    {
         MySql.Data.MySqlClient.MySqlConnection conn;
         MySql.Data.MySqlClient.MySqlCommand cmd;
         MySql.Data.MySqlClient.MySqlDataReader reader;
         string query;
         protected void Page_Load(object sender, EventArgs e)
-		{
-            
-        }
-        protected void SubmitEventMethod(object sender, EventArgs e)
         {
             string connString = System.Configuration.ConfigurationManager.ConnectionStrings["webAppConnString"].ToString();
             try

@@ -10,7 +10,7 @@
 namespace AgileWebsite {
     
     
-    public partial class Login {
+    public partial class SignIn {
         
         /// <summary>
         /// form1 control.
