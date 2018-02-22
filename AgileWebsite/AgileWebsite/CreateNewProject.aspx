@@ -11,6 +11,7 @@
                 string SaveLocation = Server.MapPath("~/Projects/" + fn);
 
                 FileUpload1.SaveAs(SaveLocation);
+
                 Label1.Text = "File name: " +
                      FileUpload1.PostedFile.FileName + "<br>" +
                      FileUpload1.PostedFile.ContentLength + " kb<br>" +
@@ -34,6 +35,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
+
     <div>
         <asp:FileUpload ID="FileUpload1" runat="server" /><br />
         <br />
