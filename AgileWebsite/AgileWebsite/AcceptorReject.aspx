@@ -9,8 +9,8 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <asp:Button id="Accept" runat="server" type="submit" Text="Accept" onclick="SubmitEventMethod" />
-            <asp:Button id="Reject" runat="server" type="submit" Text="Reject" onclick="SubmitEventMethod" />
+            <asp:Button id="Accept" runat="server" type="submit" Text="Accept" onclick="AcceptProject" />
+            <asp:Button id="Reject" runat="server" type="submit" Text="Reject" onclick="RejectProject" />
         </div>
     </form>
 </body>
