@@ -1,19 +1,55 @@
-﻿<%@ Page Title="Edit a Project" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="AgileWebsite.EditProjectPage" %>
+﻿<%@ Page Language="C#" %>
 
-<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-    <div class="jumbotron">
-        <h1><u>Edit a Project</u></h1>
-        <p class="lead">Here you can edit your current current research projects</p>
+<script runat="server">
+
+    void Page_Load(Object sender, EventArgs e)
+    {
+        // Manually register the event-handling method for
+        // the Click event of the Button control.
+        DownloadButton.Click += new EventHandler(this.DownloadButton_Click);
+    }
+
+  
+    private void DownloadButton_Click(object sender, System.EventArgs e)
+    {
+        Button clickedButton = (Button)sender;
+        clickedButton.Text = "Downloading";
+        Response.ContentType = "Application/pdf";
+        Response.AppendHeader("Content-Disposition", "attachment; filename=tester1.pdf");
+        Response.TransmitFile(Server.MapPath("~/Projects/tester1.pdf"));
+        Response.End();
+    }
+    
+
+</script>
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head runat="server">
+    <title>Untitled Page</title>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+      <h3>Download Button Example</h3>
+
+      <asp:Button id="DownloadButton"
+           Text="Click here to download"
+           OnClick="DownloadButton_Click" 
+           runat="server"/>
+      <br />
+      <br />
     </div>
+    </form>
+</body>
+</html>
 
-    <div class="jumbotron">
-        <h3><u>Here are your current projects</u></h3>
-        <br />
-        <p>This is some text.<button type="button" class="btn">Download</button></p> 
-        <p>This is another text.<button type="button" class="btn">Download</button></p> 
-    </div> 
 
-</asp:Content>
+
+
+
 
 

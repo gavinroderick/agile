@@ -211,8 +211,10 @@
     <Content Include="Login.aspx" />
     <Content Include="LoginTest.aspx" />
     <Content Include="NewProject.aspx" />
+    <Content Include="tester.aspx" />
     <Content Include="WebForm1.aspx" />
     <Content Include="EditProjectPage.aspx" />
+    <Content Include="Projects\tester1.pdf" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -399,6 +401,9 @@
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="tester.aspx.designer.cs">
+      <DependentUpon>tester.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -423,7 +428,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Projects\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -30,7 +30,7 @@ namespace AgileWebsite
             {
 
             }
-            query = "SELECT * FROM 17agileteam6db.users WHERE staffNo ='" + Username.Text + "' AND pass = '" + Password.Text + "'";
+            query = "SELECT * FROM 17agileteam6db.users WHERE staff_no ='" + Username.Text + "' AND pass = '" + Password.Text + "'";
             cmd = new MySql.Data.MySqlClient.MySqlCommand(query, conn);
 
             reader = cmd.ExecuteReader();
@@ -38,8 +38,8 @@ namespace AgileWebsite
             string info;
             while (reader.HasRows && reader.Read())
             {
-                info = reader.GetString(reader.GetOrdinal("staffNo")) + " " +
-                        reader.GetString(reader.GetOrdinal("firstName"));
+                info = reader.GetString(reader.GetOrdinal("staff_no")) + " " +
+                        reader.GetString(reader.GetOrdinal("first_name"));
             }
 
             if (reader.HasRows)
