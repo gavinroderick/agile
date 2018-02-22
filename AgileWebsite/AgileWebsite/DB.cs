@@ -71,11 +71,12 @@ namespace AgileWebsite
         }
 
 
-        // Might work, untested so far
+        // Might work, slightly tested so far
         public void Insert(string sql)
         {
-            try
+            try 
             {
+                OpenConnection();
                 command = new MySqlCommand(sql, connection);
                 command.ExecuteNonQuery();
             }
@@ -91,6 +92,7 @@ namespace AgileWebsite
         {
             try
             {
+                OpenConnection();
                 command = new MySqlCommand(sql, connection);
                 command.ExecuteNonQuery();
             }
