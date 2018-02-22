@@ -37,6 +37,16 @@
     <form id="form1" runat="server">
 
     <div>
+        <h1 >Create New Project</h1>
+        <br />
+        Project Name:        
+        <asp:TextBox id="ProjectName" runat="server" type="text" />
+        <br />
+        <br />
+        Project Info:        
+        <asp:TextBox id="TextBox2" runat="server" type="text" TextMode="multiline"/>
+        <br />
+        <br />
         <asp:FileUpload ID="FileUpload1" runat="server" /><br />
         <br />
         <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" 
