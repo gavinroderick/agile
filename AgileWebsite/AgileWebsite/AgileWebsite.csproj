@@ -215,6 +215,8 @@
     <Content Include="WebForm1.aspx" />
     <Content Include="EditProjectPage.aspx" />
     <Content Include="Projects\tester1.pdf" />
+    <Content Include="Projects\Test1.xlsx" />
+    <Content Include="Projects\Test2.xlsx" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
