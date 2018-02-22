@@ -18,6 +18,7 @@ namespace AgileWebsite
 
         protected void Button1_Click(object sender, EventArgs e)
         {
+            string new123;
             string query;
             DB db = new DB();
             if (FileUpload1.HasFile)
