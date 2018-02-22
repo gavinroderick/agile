@@ -7,14 +7,14 @@ using System.Web;
 namespace AgileWebsite
 {
 
-    public class DB
+    public class DBTest
     {
         private MySqlConnection connection;
         private MySqlCommand command;
         private MySqlDataReader reader;
 
         //Constructor
-        public DB() => Initialize();
+        public DBTest() => Initialize();
 
         //Initialize values
         private void Initialize()
@@ -71,12 +71,11 @@ namespace AgileWebsite
         }
 
 
-        // Might work, slightly tested so far
+        // Might work, untested so far
         public void Insert(string sql)
         {
-            try 
+            try
             {
-                OpenConnection();
                 command = new MySqlCommand(sql, connection);
                 command.ExecuteNonQuery();
             }
@@ -92,7 +91,6 @@ namespace AgileWebsite
         {
             try
             {
-                OpenConnection();
                 command = new MySqlCommand(sql, connection);
                 command.ExecuteNonQuery();
             }
