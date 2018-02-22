@@ -273,6 +273,8 @@
     <Content Include="EditProjectPage.aspx" />
     <Content Include="Projects\tester1.pdf" />
     <Content Include="Projects\Test31.xlsx" />
+    <Content Include="Projects\Empty.xlsx" />
+    <Content Include="Projects\Book1.ods" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

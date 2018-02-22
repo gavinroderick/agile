@@ -13,35 +13,29 @@
         DownloadButton.Click += new EventHandler(this.DownloadButton_Click);
     }
 
-
-
-
-
-
     private void DownloadButton_Click(object sender, System.EventArgs e)
     {
 
         Button clickedButton = (Button)sender;
-        
-      
-        
+
+
+
 
         if (System.IO.File.Exists(Server.MapPath("~/Projects/" + fileName.Text + ".xlsx")))
         {
-             clickedButton.Text = "Downloading";
-           //  Response.ContentType = "Application/.xlsx";
-             Response.ContentType = "application/vnd.xls";
-             Response.AppendHeader("Content-Disposition", "attachment; filename=" + fileName.Text + ".xlsx");
-             Response.AddHeader("Content-Length", fileName.Text.Length.ToString());
-             Response.TransmitFile(Server.MapPath("~/Projects/" + fileName.Text + ".xlsx"));
-             Response.Write("This file exists.");
+            clickedButton.Text = "Downloading";
+            Response.ContentType = "Application/.xlsx";
+            Response.AppendHeader("Content-Disposition", "attachment; filename=" + fileName.Text + ".xlsx");
+            Response.TransmitFile(Server.MapPath("~/Projects/" + fileName.Text + ".xlsx"));
+            Response.Write("This file exists.");
+            Response.End();
         }
         else
         {
-              Response.Write("This file doesnt exist.");
+            Response.Write("This file doesnt exist.");
         }
-       
-       Response.End();
+
+        
     }
 
 </script>
@@ -50,7 +44,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
-    <title>Untitled Page</title>
+    <title>Edit Project Page</title>
 </head>
 <body>
     <form runat="server">

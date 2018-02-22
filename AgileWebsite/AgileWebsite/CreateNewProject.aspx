@@ -1,16 +1,28 @@
-﻿<%@ Page Language="C#" %>
+﻿<%@ Page Language="C#"AutoEventWireup="true" CodeBehind="CreateNewProject.aspx.cs" Inherits="AgileWebsite.CreateNewProject" %>
+
+
 
 <script runat="server">
-    protected void Button1_Click(object sender, EventArgs e)
+    
+     //MySql.Data.MySqlClient.MySqlConnection conn;
+     //MySql.Data.MySqlClient.MySqlCommand cmd;
+     //MySql.Data.MySqlClient.MySqlDataReader reader;
+     //string query;
+     //DB Database = new DB();
+
+    /* protected void Button1_Click(object sender, EventArgs e)
     {
+        
         if (FileUpload1.HasFile)
             try
             {
-
                 string fn = System.IO.Path.GetFileName(FileUpload1.PostedFile.FileName);
                 string SaveLocation = Server.MapPath("~/Projects/" + fn);
 
-                FileUpload1.SaveAs(SaveLocation);
+                
+                query = "INSERT INTO 17agileteam6db.files (file_name, date_uploaded, file) VALUES (" + fn + ", " + DateTime.Now + ", " + FileUpload1.PostedFile + ")";
+
+                //FileUpload1.SaveAs(SaveLocation);
 
                 Label1.Text = "File name: " +
                      FileUpload1.PostedFile.FileName + "<br>" +
@@ -26,7 +38,7 @@
         {
             Label1.Text = "You have not specified a file.";
         }
-    }
+    }*/
 </script>
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
