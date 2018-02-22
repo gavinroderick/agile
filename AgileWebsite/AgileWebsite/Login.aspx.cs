@@ -32,19 +32,18 @@ namespace AgileWebsite
             }
             query = "SELECT * FROM 17agileteam6db.users WHERE staff_no ='" + Username.Text + "' AND pass = '" + Password.Text + "'";
             cmd = new MySql.Data.MySqlClient.MySqlCommand(query, conn);
-
+            
             reader = cmd.ExecuteReader();
-
-            string info;
+            
             while (reader.HasRows && reader.Read())
             {
-                info = reader.GetString(reader.GetOrdinal("staff_no")) + " " +
-                        reader.GetString(reader.GetOrdinal("first_name"));
+                Session["role"] = reader.GetString(reader.GetOrdinal("role"));
             }
 
             if (reader.HasRows)
             {
                 Session["loggedin"] = "Loggedin";
+                Session["StaffNo"] = Username.Text;
                 Response.BufferOutput = true;
                 Response.Redirect("LoginTest.aspx", false);
             }

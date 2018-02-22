@@ -10,8 +10,8 @@
     <form id="form1" runat="server">
         <div>
             <h1>Login</h1>
-            Username:
-            <asp:TextBox id="Username" runat="server" type="text" />
+            StaffNo:
+            <asp:TextBox id="Username" runat="server" type="text" /><a href="Login.aspx">Login.aspx</a>
             Password:
             <asp:TextBox id="Password" runat="server" TextMode="Password" type="password" />
             <asp:Button id="login" runat="server" type="submit" Text="Login" onclick="SubmitEventMethod" />
