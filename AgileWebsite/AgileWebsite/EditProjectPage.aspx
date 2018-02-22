@@ -29,8 +29,10 @@
         if (System.IO.File.Exists(Server.MapPath("~/Projects/" + fileName.Text + ".xlsx")))
         {
              clickedButton.Text = "Downloading";
-             Response.ContentType = "Application/.xlsx";
+           //  Response.ContentType = "Application/.xlsx";
+             Response.ContentType = "application/vnd.xls";
              Response.AppendHeader("Content-Disposition", "attachment; filename=" + fileName.Text + ".xlsx");
+             Response.AddHeader("Content-Length", fileName.Text.Length.ToString());
              Response.TransmitFile(Server.MapPath("~/Projects/" + fileName.Text + ".xlsx"));
              Response.Write("This file exists.");
         }
@@ -38,24 +40,8 @@
         {
               Response.Write("This file doesnt exist.");
         }
-
-        
+       
        Response.End();
-
-
-        /*
-        if (System.IO.File.Exists(Server.MapPath("~/Projects/" + fileName.Text + ".xlsx")))
-        {
-            Response.Write("This file exists.");
-            
-        }
-        {
-            Response.Write("This file does not exist.");
-        }
-        */
-
-
-
     }
 
 </script>
