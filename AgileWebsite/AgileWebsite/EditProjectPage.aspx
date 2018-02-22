@@ -16,13 +16,20 @@
     {
 
         Button clickedButton = (Button)sender;
-
-        if (System.IO.File.Exists(Server.MapPath("~/Projects/" + fileName.Text + ".xlsx")))
+        string File = fileName.Text + ".xlsx";
+        Download(clickedButton, File);
+        /** REFACTORED, THIS CODE MADE INTO A FUNCTION OF ITS OWN, MAKES IT REUSABLE IN OTHER PLACES
+        //THIS WAS PREVIOUSLY REFACTORED ALSO
+        //if (System.IO.File.Exists(Server.MapPath("~/Projects/" + fileName.Text + ".xlsx")))
+        if (System.IO.File.Exists(Server.MapPath("~/Projects/" + File)))
         {
             clickedButton.BackColor = System.Drawing.Color.AliceBlue;
             Response.ContentType = "Application/.xlsx";
-            Response.AppendHeader("Content-Disposition", "attachment; filename=" + fileName.Text + ".xlsx");
-            Response.TransmitFile(Server.MapPath("~/Projects/" + fileName.Text + ".xlsx"));
+            Response.AppendHeader("Content-Disposition", "attachment; filename=" + File);
+            //REFACTORED CODE
+            // Response.AppendHeader("Content-Disposition", "attachment; filename=" + fileName.Text + ".xlsx");
+            // Response.TransmitFile(Server.MapPath("~/Projects/" + fileName.Text + ".xlsx"));
+            Response.TransmitFile(Server.MapPath("~/Projects/" + File));
             Response.Write("This file exists.");
             Response.End();
         }
@@ -30,9 +37,33 @@
         {
             Response.Write("This file doesnt exist.");
         }
+        */
 
-        
     }
+
+
+    private void Download(Button clickedButton, string fileName)
+    {
+         if (System.IO.File.Exists(Server.MapPath("~/Projects/" + fileName)))
+        {
+            clickedButton.BackColor = System.Drawing.Color.AliceBlue;
+            Response.ContentType = "Application/.xlsx";
+            Response.AppendHeader("Content-Disposition", "attachment; filename=" + fileName);
+            //REFACTORED CODE
+            // Response.AppendHeader("Content-Disposition", "attachment; filename=" + fileName.Text + ".xlsx");
+            // Response.TransmitFile(Server.MapPath("~/Projects/" + fileName.Text + ".xlsx"));
+            Response.TransmitFile(Server.MapPath("~/Projects/" + fileName));
+            Response.Write("This file exists.");
+            Response.End();
+        }
+        else
+        {
+            Response.Write("This file doesnt exist.");
+        }
+    }
+
+
+
 
 </script>
 
