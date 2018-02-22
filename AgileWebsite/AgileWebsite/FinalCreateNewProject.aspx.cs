@@ -25,13 +25,18 @@ namespace AgileWebsite
                 string SaveLocation = Server.MapPath("~/Projects/" + fn);
 
 
-                query = "INSERT INTO files (file_name, date_uploaded) VALUES (" + fn + ", " + DateTime.Now + ", " + FileUpload1.PostedFile + ")";
-                string query2 = "INSERT INTO files (file_name, date_uploaded) VALUES ('scot2', '1111-11-11 20:20')";
-                db.Insert(query2);
+                query = "INSERT INTO files (file_name, date_uploaded, actual_file) VALUES ('" + fn + "', '" + DateTime.Now + "', " + FileUpload1.PostedFile + ")";
+                    string part1 = "INSERT INTO files (file_name) VALUES ('" + fn + "')";
+                    string part2 = "INSERT INTO files (date_uploaded) VALUES ('" + DateTime.Now + "')";
+                    string part3 = "INSERT INTO files (actual_file) VALUES (" + FileUpload1.PostedFile + ")";
+                    //string query2 = "INSERT INTO files (file_name, date_uploaded) VALUES ('scot2', '1111-11-11 20:20')";
+                    db.Insert(part1);
+                    db.Insert(part2);
+                    db.Insert(part3);
 
-                //FileUpload1.SaveAs(SaveLocation);
+                    //FileUpload1.SaveAs(SaveLocation);
 
-                Label1.Text = "File name: " +
+                    Label1.Text = "File name: " +
                      FileUpload1.PostedFile.FileName + "<br>" +
                      FileUpload1.PostedFile.ContentLength + " kb<br>" +
                      "Content type: " +
