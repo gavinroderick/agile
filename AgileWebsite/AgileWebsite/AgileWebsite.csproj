@@ -227,6 +227,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="FinalCreateNewProject.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="LoginTest.aspx" />
     <Content Include="NewProject.aspx" />
@@ -438,6 +439,13 @@
     </Compile>
     <Compile Include="failedLogin.aspx.designer.cs">
       <DependentUpon>failedLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FinalCreateNewProject.aspx.cs">
+      <DependentUpon>FinalCreateNewProject.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FinalCreateNewProject.aspx.designer.cs">
+      <DependentUpon>FinalCreateNewProject.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
