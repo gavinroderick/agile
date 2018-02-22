@@ -29,7 +29,7 @@ namespace AgileWebsite
         }
 
         //Open connection to database
-        private bool OpenConnection()
+        public bool OpenConnection()
         {
             try
             {
