@@ -38,7 +38,8 @@ namespace AgileWebsite
             }
             else
             {
-                Response.Redirect("failedLogin.aspx", false);
+                Session["failed"] = "failed";
+                Response.Redirect("Login.aspx", false);
             }
             reader.Close();
         }

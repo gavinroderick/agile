@@ -1,34 +1,41 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="RIS.aspx.cs" Inherits="AgileWebsite.RIS" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ris.aspx.cs" Inherits="AgileWebsite.ris_home" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
-        <div>
+    <div>
 
         <%for (int m = 0; m < data.Count()-1; m++) {  %>
               <%System.Diagnostics.Debug.WriteLine(data.Count()); %>
+
             <div class="card">
+                
                 <div class="card-block">
-                <h4 class="card-title"><%=projectID[m] %></h4>
-                    <%System.Diagnostics.Debug.WriteLine(m); %>
-                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
+                    <div class="row">
+                        <div class="col-8">
+                            <h4 class="card-title"><%=projectName[m] %></h4>
+                             <%System.Diagnostics.Debug.WriteLine(m); %>
+                            <h6 class="card-subtitle mb-2 text-muted">Researcher: <%=firstName[m]%>  <%=lastName[m]%> - <%=department[m] %></h6>
+                        </div>
+                        <br />
+                        <div class="col-4">
+                            
+                            <button type="button" class="btn btn-primary">Upload</button>
+                            <button type="button" class="btn btn-secondary">Download</button>
+                            <button type="button" class="btn btn-success">Approve</button>
+                        </div>                       
+                    </div>
+                    
+                
                 </div>
+                
+                
+            </div>
+            <br />
          <%} %>
       
-            </div>
+            
             
             
 
 
         </div>
-    </form>
-</body>
-</html>
+</asp:Content>
