@@ -234,6 +234,7 @@
     <Content Include="LoginTest.aspx" />
     <Content Include="NewProject.aspx" />
     <Content Include="RIS.aspx" />
+    <Content Include="ris_home.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
@@ -485,6 +486,13 @@
     </Compile>
     <Compile Include="RIS.aspx.designer.cs">
       <DependentUpon>RIS.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ris_home.aspx.cs">
+      <DependentUpon>ris_home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ris_home.aspx.designer.cs">
+      <DependentUpon>ris_home.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
