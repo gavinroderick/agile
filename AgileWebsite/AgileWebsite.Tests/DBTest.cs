@@ -14,7 +14,10 @@ namespace AgileWebsite
         private MySqlDataReader reader;
 
         //Constructor
-        public DBTest() => Initialize();
+        public DBTest()
+        {
+            Initialize();
+        }
 
         //Initialize values
         private void Initialize()
@@ -72,31 +75,38 @@ namespace AgileWebsite
 
 
         // Might work, untested so far
-        public void Insert(string sql)
+        public bool Insert(string sql)
         {
             try
             {
+                OpenConnection();
                 command = new MySqlCommand(sql, connection);
                 command.ExecuteNonQuery();
+                return true;
             }
             catch (Exception ex)
             {
                 Console.Write(ex.Message);
+                return false;
             }
         }
 
 
         //Also untested, may not work.
-        public void Update(string sql)
+        public bool Update(string sql)
         {
             try
             {
+                OpenConnection();
                 command = new MySqlCommand(sql, connection);
                 command.ExecuteNonQuery();
+                CloseConnection();
+                return true;
             }
             catch (Exception ex)
             {
                 Console.Write(ex.Message);
+                return false;
             }
         }
     }

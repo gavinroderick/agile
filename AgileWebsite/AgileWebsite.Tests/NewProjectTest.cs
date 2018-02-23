@@ -5,13 +5,18 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace AgileWebsite.Tests
 {
     [TestClass]
-    public class ConnectionTest
+    public class NewProjectTest
     {
         [TestMethod]
-        public void TestOpenConnection()
+        public void TestNewProjectSuccess()
         {
-            DBTest db = new DBTest();
-            Assert.AreEqual(true, db.OpenConnection());
         }
+
+        [TestMethod]
+        public void TestNewProjectFailed()
+        {
+        }
+
+        
     }
 }
