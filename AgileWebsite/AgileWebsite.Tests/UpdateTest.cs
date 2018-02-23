@@ -5,13 +5,14 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace AgileWebsite.Tests
 {
     [TestClass]
-    public class ConnectionTest
+    public class UpdateTest
     {
         [TestMethod]
-        public void TestConnection()
+        public void TestUpdate()
         {
             DBTest db = new DBTest();
-            Assert.AreEqual(true, db.OpenConnection());
+            string query = "UPDATE 17agileteam6db.users SET first_name = 'Dan' WHERE user_ID = 3";
+            Assert.AreEqual(true, db.Update(query));
         }
     }
 }
