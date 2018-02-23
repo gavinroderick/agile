@@ -17,7 +17,7 @@
 
         Button clickedButton = (Button)sender;
         string File = fileName.Text + ".xlsx";
-        Download(clickedButton, File);
+        Download(File);
         /** REFACTORED, THIS CODE MADE INTO A FUNCTION OF ITS OWN, MAKES IT REUSABLE IN OTHER PLACES
         //THIS WAS PREVIOUSLY REFACTORED ALSO
         //if (System.IO.File.Exists(Server.MapPath("~/Projects/" + fileName.Text + ".xlsx")))
@@ -42,11 +42,10 @@
     }
 
 
-    private void Download(Button clickedButton, string fileName)
+    public void Download(string fileName)
     {
          if (System.IO.File.Exists(Server.MapPath("~/Projects/" + fileName)))
         {
-            clickedButton.BackColor = System.Drawing.Color.AliceBlue;
             Response.ContentType = "Application/.xlsx";
             Response.AppendHeader("Content-Disposition", "attachment; filename=" + fileName);
             //REFACTORED CODE

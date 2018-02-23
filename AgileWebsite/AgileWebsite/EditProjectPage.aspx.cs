@@ -9,24 +9,26 @@ namespace AgileWebsite
 {
     public partial class EditProjectPage : Page
     {
-            
-        protected void Page_Load(object sender, EventArgs e)
+
+        public bool Download(string fileName)
         {
-
+            if (System.IO.File.Exists(Server.MapPath("~/Projects/" + fileName)))
+            {
+                Response.ContentType = "Application/.xlsx";
+                Response.AppendHeader("Content-Disposition", "attachment; filename=" + fileName);
+                //REFACTORED CODE
+                // Response.AppendHeader("Content-Disposition", "attachment; filename=" + fileName.Text + ".xlsx");
+                // Response.TransmitFile(Server.MapPath("~/Projects/" + fileName.Text + ".xlsx"));
+                Response.TransmitFile(Server.MapPath("~/Projects/" + fileName));
+                Response.Write("This file exists.");
+                Response.End();
+                return true;
+            }
+            else
+            {
+                Response.Write("This file doesnt exist.");
+                return false;
+            }
         }
-
-     
-
-        public void DownloadExistingFile(string projectName)
-        {
-            Response.ClearHeaders();
-            Response.ContentType = "application/pdf";
-            Response.AddHeader("Content-Disposition", "attachment; filename=pdffile.pdf");
-            Response.TransmitFile(Server.MapPath("Projects") + "\\" + "teser1.pdf");
-            Response.End();
-        }
-
-        
-      
     }
 }
