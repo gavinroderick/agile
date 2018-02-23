@@ -14,7 +14,10 @@ namespace AgileWebsite
         private MySqlDataReader reader;
 
         //Constructor
-        public DBTest() => Initialize();
+        public DBTest()
+        {
+            Initialize();
+        }
 
         //Initialize values
         private void Initialize()

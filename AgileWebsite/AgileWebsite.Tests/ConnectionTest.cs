@@ -8,7 +8,7 @@ namespace AgileWebsite.Tests
     public class ConnectionTest
     {
         [TestMethod]
-        public void ConnectionTest()
+        public void TestOpenConnection()
         {
             DBTest db = new DBTest();
             Assert.AreEqual(true, db.OpenConnection());
