@@ -34,7 +34,7 @@ namespace AgileWebsite
                 Session["loggedin"] = "Loggedin";
                 Session["StaffNo"] = Username.Text;
                 Response.BufferOutput = true;
-                Response.Redirect("LoginTest.aspx", false);
+                Response.Redirect("Index.aspx", false);
             }
             else
             {
