@@ -63,6 +63,9 @@
          Text="Upload File" />&nbsp;<br />
         <br />
         <asp:Label ID="Label1" runat="server"></asp:Label></div>
+        <div>
+            <asp:Label ID="Label2" runat="server"></asp:Label>
+        </div>
     </form>
 </body>
 </html>
