@@ -38,19 +38,19 @@
             </Scripts>
         </asp:ScriptManager>
 
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="background-color: #4365e2!important; color:#FFF;">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
+            <div class="collapse navbar-collapse justify-content-md-left" id="navbarsExample08">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="/applications">Applications<span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="/index">Home</a>
                     </li>
-                    <li class="nav-item">
+                    <%--<li class="nav-item">
                         <a class="nav-link" href="/profile">My Profile</a>
-                    </li>
+                    </li>--%>
                     <li class="nav-item">
                         <a class="nav-link" href="/about">About</a>
                     </li>
@@ -62,11 +62,16 @@
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
             <hr />
-            <footer class="footer">
+            <footer class="mastfoot mt-auto">
+                <div class="inner">
+                  <p>Cover template for <a href="https://getbootstrap.com/">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+                </div>
+            </footer>
+            <%--<footer class="footer">
                 <p>&copy; <%: DateTime.Now.Year %> - Agile Team 6</p>
                 <img src="https://www.computing.dundee.ac.uk/assets/site_logo-b662fb1b1d6d2f9dbf0d9795aa0edcff.png" />
                 <img src="https://my.dundee.ac.uk/branding/_1_1/Logo-cropped.png" />
-            </footer>
+            </footer>--%>
         </div>
     </form>
 </body>

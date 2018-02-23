@@ -20,6 +20,9 @@ namespace AgileWebsite
             if (LI == "Loggedin")
             {
                 staffID = (string)(Session["StaffNo"]);
+                Session["FirstName"] = reader.GetString("first_name");
+                Session["LastName"] = reader.GetString("last_name");
+                Session["department"] = reader.GetString("department");
                 Redirect(getDetails(db, staffID));
             }
             else
@@ -30,7 +33,7 @@ namespace AgileWebsite
 
         private string getDetails(DB db, string staffID)
         {
-            string roleQuery = "SELECT role from users WHERE staff_no = '" + staffID + "';";
+            string roleQuery = "SELECT first_name, last_name, department, role, from users WHERE staff_no = '" + staffID + "';";
             reader = db.Select(roleQuery);
             reader.Read();
             return reader.GetString("role");
