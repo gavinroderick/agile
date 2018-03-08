@@ -70,6 +70,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HistoryTest.cs" />
     <Compile Include="NewProjectTest.cs" />
     <Compile Include="InsertTest.cs" />
     <Compile Include="UpdateTest.cs" />
