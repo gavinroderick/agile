@@ -42,6 +42,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
     <title>Upload Files</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="Content/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="Content/cover.css" rel="stylesheet">
 </head>
 <body>
     <form id="form1" runat="server">
@@ -54,7 +60,7 @@
         <br />
         <br />
         Project Info:        
-        <asp:TextBox id="TextBox2" runat="server" type="text" TextMode="multiline"/>
+        <asp:TextBox id="ProjectInfo" runat="server" type="text" TextMode="multiline"/>
         <br />
         <br />
         <asp:FileUpload ID="FileUpload1" runat="server" /><br />

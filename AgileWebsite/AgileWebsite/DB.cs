@@ -46,6 +46,16 @@ namespace AgileWebsite
             }
         }
 
+        public void OpenConnectionForScott()
+        {
+            OpenConnection();
+        }
+
+        public MySqlConnection GetConnectionStringForScott()
+        {
+            return connection;
+        }
+
         //Close connection
         private bool CloseConnection()
         {
@@ -59,6 +69,11 @@ namespace AgileWebsite
                 Console.Write(ex.Message);
                 return false;
             }
+        }
+
+        public void CloseConnectionForScott()
+        {
+            CloseConnection();
         }
 
         //Use this to Select data from the DB

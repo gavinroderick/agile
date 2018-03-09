@@ -66,9 +66,13 @@ namespace AgileWebsite
                     //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
                     //NOTE: This is the fourth refractored attempt at this code
-                    //The code does not successfully open a connection to the database on this attempt
-                    //This should however work better in the attempt of storing BLOB files to the database which was the problem in earlier attempts
-                    //IMPORTANT*: This means we could not construct a full unit test for this part of the code
+                    //The code does successfully open a connection to the database on this attempt AND WORKS
+                    //IMPORTANT*: This means we can now construct a full unit test for this part of the code
+
+
+
+
+
                     int FileLen = FileUpload1.PostedFile.ContentLength;
                     byte[] input = new byte[FileLen];
                     System.IO.Stream MyStream = FileUpload1.PostedFile.InputStream;
@@ -76,20 +80,32 @@ namespace AgileWebsite
                     {
                         input = binaryReader.ReadBytes((int)MyStream.Length);
                     }
-                    string constring = "server=silva.computing.dundee.ac.uk;User ID=17agileteam6; Password=7845.at6.5487; database=17agileteam6db";
-                    MySqlConnection con = new MySqlConnection(constring);
 
-                    con.Open();
+
+                    db.OpenConnectionForScott();
+
+                    Console.Write("I got Here");
+
+
                     query = "INSERT INTO files (file_name, date_uploaded, actual_file) VALUES (@fn,@dateTimeCorrectFormat,@input)";
+                    string query2 = "INSERT INTO projects (file_ID, researcher_ID, project_info, date_submitted, project_name) VALUES ((SELECT MAX(file_id) FROM 17agileteam6db.files), '99C008', @projInfo, @dateSub, @projName)";
 
-
-                    MySqlCommand c = new MySqlCommand(query);
+                    MySqlCommand c = new MySqlCommand(query, db.GetConnectionStringForScott());
                     c.Parameters.AddWithValue("@fn", fn);
                     c.Parameters.AddWithValue("@dateTimeCorrectFormat", dateTimeCorrectFormat);
                     c.Parameters.Add("@input", MySqlDbType.LongBlob, input.Length).Value = input;
                     int i = c.ExecuteNonQuery();
 
-                    con.Close();
+                    MySqlCommand c2 = new MySqlCommand(query2, db.GetConnectionStringForScott());
+                    c2.Parameters.AddWithValue("@projInfo", ProjectInfo.Text);
+                    c2.Parameters.AddWithValue("@dateSub", dateTimeCorrectFormat);
+                    c2.Parameters.AddWithValue("@projName", ProjectName.Text);
+                    int z = c2.ExecuteNonQuery();
+
+                    db.CloseConnectionForScott();
+
+
+                    //con.Close();
 
 
                     ////////////////////////////////////////////////////////////////////////////////
@@ -128,11 +144,11 @@ namespace AgileWebsite
                     }*/
 
                     //query = "INSERT INTO files (file_name, date_uploaded, actual_file) VALUES ('" + fn + "', '" + dateTimeCorrectFormat + "', " + MyString + ")";
-                    string query2 = "INSERT INTO files (file_name, date_uploaded) VALUES ('" + fn + "', '" + dateTimeCorrectFormat + "')";
-                    string query3 = "INSERT INTO files (file_name, date_uploaded) VALUES ('" + fn + "', '2001-09-08 12:54')";
-                    string part1 = "INSERT INTO files (file_name) VALUES ('" + fn + "')";
-                    string part2 = "INSERT INTO files (date_uploaded) VALUES ('" + DateTime.Now.Year + "-" + DateTime.Now.Month + "-" + DateTime.Now.Day +" " + DateTime.Now.Hour + ":" + DateTime.Now.Minute +":" + DateTime.Now.Second + "')";
-                    string part3 = "INSERT INTO files (actual_file) VALUES (" + FileUpload1.PostedFile + ")";
+                    //string query2 = "INSERT INTO files (file_name, date_uploaded) VALUES ('" + fn + "', '" + dateTimeCorrectFormat + "')";
+                    //string query3 = "INSERT INTO files (file_name, date_uploaded) VALUES ('" + fn + "', '2001-09-08 12:54')";
+                    //string part1 = "INSERT INTO files (file_name) VALUES ('" + fn + "')";
+                    //string part2 = "INSERT INTO files (date_uploaded) VALUES ('" + DateTime.Now.Year + "-" + DateTime.Now.Month + "-" + DateTime.Now.Day +" " + DateTime.Now.Hour + ":" + DateTime.Now.Minute +":" + DateTime.Now.Second + "')";
+                    //string part3 = "INSERT INTO files (actual_file) VALUES (" + FileUpload1.PostedFile + ")";
                     //string query2 = "INSERT INTO files (file_name, date_uploaded) VALUES ('scot2', '1111-11-11 20:20')";
                     //db.Insert(part1);
                     //db.Insert(query2);
