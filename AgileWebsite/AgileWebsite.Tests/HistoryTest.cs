@@ -22,7 +22,6 @@ namespace AgileWebsite.Tests
                 info = reader.GetString(reader.GetOrdinal("projectAction"));
             }
 
-            System.Diagnostics.Debug.Write(info);
             Assert.AreEqual("Upload", info);
         }
 
