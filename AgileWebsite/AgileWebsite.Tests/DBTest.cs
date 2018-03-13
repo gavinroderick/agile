@@ -45,7 +45,7 @@ namespace AgileWebsite
                 return false;
             }
         }
-
+        
         //Close connection
         private bool CloseConnection()
         {

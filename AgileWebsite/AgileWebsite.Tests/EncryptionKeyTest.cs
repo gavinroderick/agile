@@ -2,6 +2,7 @@
 using System.Text;
 using System.Configuration;
 using MySql.Data;
+using MySql.Data.MySqlClient;
 using System.Security.Cryptography;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -15,6 +16,17 @@ namespace AgileWebsite.Tests
         public void CreateKeyTest()
         {
             bool insert = false;
+            MySqlConnection connection;
+            MySqlCommand command;
+            string server = "silva.computing.dundee.ac.uk";
+            string database = "17agileteam6db";
+            string uid = "17agileteam6";
+            string password = "7845.at6.5487";
+
+            string connString = "server=" + server + ";uid=" + uid + ";pwd=" + password + ";database=" + database;
+            connection = new MySqlConnection(connString);
+
+            
             TripleDESCryptoServiceProvider TDES = new TripleDESCryptoServiceProvider();
             try
             {
@@ -22,8 +34,20 @@ namespace AgileWebsite.Tests
                 TDES.GenerateKey();
                 Console.Write(TDES.Key);
                 DBTest db = new DBTest();
-                string query = "INSERT INTO 17agileteam6db.signatures (Signature) VALUES('" + TDES.Key + "')";
-                insert = db.Insert(query);
+                string query = "INSERT INTO 17agileteam6db.signatures (Signature) VALUES (@binKey)";
+                try
+                {
+                    connection.Open();
+                    command = new MySqlCommand(query, connection);
+                    command.Parameters.Add("@binKey", MySqlDbType.VarBinary, 25).Value = TDES.Key;
+                    command.ExecuteNonQuery();
+                    insert =  true;
+                }
+                catch (Exception ex)
+                {
+                    Console.Write(ex.Message);
+                    insert =  false;
+                }
             }
             catch
             {
@@ -47,7 +71,6 @@ namespace AgileWebsite.Tests
             {
                 TDES.GenerateIV();
                 TDES.GenerateKey();
-                Console.Write(TDES.Key);
                 encrypted = Encrypt("Hello", TDES);
                 decrypt = Decrypt(encrypted, TDES);
                 Assert.AreEqual("Hello", decrypt);
@@ -61,6 +84,34 @@ namespace AgileWebsite.Tests
                
             }
 
+        }
+
+        [TestMethod]
+        public void GetKeyTest()
+        {
+            
+            string query = "SELECT * FROM 17agileteam6db.signatures WHERE idSignatures = 4 ";
+            DBTest db = new DBTest();
+            MySql.Data.MySqlClient.MySqlDataReader reader = db.Select(query);
+            bool match = false;
+            while (reader.HasRows && reader.Read())
+            {
+                TripleDESCryptoServiceProvider TDES = new TripleDESCryptoServiceProvider();
+                byte[] key = BitConverter.GetBytes(reader.GetOrdinal("Signature"));
+                TDES.Key = key;
+                string encString1 = Encrypt("Hi", TDES);
+                string encString2 = Encrypt("Hi", TDES);
+                
+                if(encString2 == "Hi")
+                {
+                    match = true;
+                }
+                
+
+            }
+
+            reader.Close();
+            Assert.AreEqual(match, true);
         }
 
         //https://stackoverflow.com/questions/11413576/how-to-implement-triple-des-in-c-sharp-complete-example
@@ -117,5 +168,7 @@ namespace AgileWebsite.Tests
             //return the Clear decrypted TEXT
             return UTF8Encoding.UTF8.GetString(resultArray);
         }
+
+        
     }
 }
