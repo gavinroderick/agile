@@ -94,24 +94,26 @@ namespace AgileWebsite.Tests
             DBTest db = new DBTest();
             MySql.Data.MySqlClient.MySqlDataReader reader = db.Select(query);
             bool match = false;
+            byte[] rawData;
+
             while (reader.HasRows && reader.Read())
             {
                 TripleDESCryptoServiceProvider TDES = new TripleDESCryptoServiceProvider();
-                byte[] key = BitConverter.GetBytes(reader.GetOrdinal("Signature"));
-                TDES.Key = key;
+                rawData = new byte[24];
+                rawData = (byte[])reader["Signature"];
+                TDES.Key = rawData;
                 string encString1 = Encrypt("Hi", TDES);
-                string encString2 = Encrypt("Hi", TDES);
+                string encString2 = Decrypt(encString1, TDES);
                 
                 if(encString2 == "Hi")
                 {
                     match = true;
                 }
-                
+                Assert.AreEqual(match, true);
 
             }
 
             reader.Close();
-            Assert.AreEqual(match, true);
         }
 
         //https://stackoverflow.com/questions/11413576/how-to-implement-triple-des-in-c-sharp-complete-example
@@ -120,8 +122,6 @@ namespace AgileWebsite.Tests
         {
             byte[] toEncryptArray = UTF8Encoding.UTF8.GetBytes(toEncrypt);
 
-            System.Configuration.AppSettingsReader settingsReader =
-                                                new AppSettingsReader();
             // Get the key from config file
       
             //set the secret key for the tripleDES algorithm
