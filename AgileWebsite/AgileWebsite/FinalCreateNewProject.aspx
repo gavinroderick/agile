@@ -52,7 +52,9 @@
 <body>
     <form id="form1" runat="server">
 
-    <div>
+     <br /><br /><br /><br /><br /><br /><br /><br />
+
+     <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
         <h1 >Create New Project</h1>
         <br />
         Project Name:        
@@ -68,7 +70,11 @@
         <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" 
          Text="Upload File" />&nbsp;<br />
         <br />
-        <asp:Label ID="Label1" runat="server"></asp:Label></div>
+        <asp:Label ID="Label1" runat="server"></asp:Label>
+
+     </div>
+        
+        
         <div>
             <asp:Label ID="Label2" runat="server"></asp:Label>
         </div>
