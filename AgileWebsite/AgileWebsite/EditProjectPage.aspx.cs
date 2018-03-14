@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Microsoft.Win32;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -22,7 +23,7 @@ namespace AgileWebsite
 
         }
        
-        public void DownloadFromDatabase()
+        public void DownloadFromDatabase(string fileName)
         {
             MySql.Data.MySqlClient.MySqlConnection conn;
             MySql.Data.MySqlClient.MySqlCommand cmd;
@@ -35,35 +36,48 @@ namespace AgileWebsite
             FileStream fs;
             conn.ConnectionString = "server=silva.computing.dundee.ac.uk;uid=17agileteam6;" +
                 "pwd=7845.at6.5487;database=17agileteam6db";
-            SQL = "SELECT file_name, file_size, actual_file FROM file";
-         
+            SQL = "SELECT file_name, file_size, actual_file FROM files WHERE file_name = @FileName";
+           
                 conn.Open();
                 cmd.Connection = conn;
                 cmd.CommandText = SQL;
-                myData = cmd.ExecuteReader();
+                cmd.Parameters.AddWithValue("@FileName", fileName+".xlsx");
+            myData = cmd.ExecuteReader();
                 if (!myData.HasRows)
                     throw new Exception("There are no BLOBs to save");
                 myData.Read();
                 FileSize = myData.GetUInt32(myData.GetOrdinal("file_size"));
                 rawData = new byte[FileSize];
-                myData.GetBytes(myData.GetOrdinal("file"), 0, rawData, 0, (int)FileSize);
-                fs = new FileStream(@"C:\newfile.xlsx", FileMode.OpenOrCreate, FileAccess.Write);
+                myData.GetBytes(myData.GetOrdinal("actual_file"), 0, rawData, 0, (int)FileSize);
+
+            //Get path to download folder
+            String path = String.Empty;
+            RegistryKey rKey = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Internet Explorer\Main");
+            if (rKey != null)
+                path = (String)rKey.GetValue("Default Download Directory");
+            if (String.IsNullOrEmpty(path))
+                path = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\Downloads\\" + fileName +".xlsx";
+            ////
+
+            fs = new FileStream(@path, FileMode.OpenOrCreate, FileAccess.Write);
                 fs.Write(rawData, 0, (int)FileSize);
                 fs.Close();            
                 myData.Close();
                 conn.Close();
           
         }
+
         public void Button1_Click(object sender, System.EventArgs e)
         {
            
 
             Button clickedButton = (Button)sender;
+            string File = fileName.Text;
+            DownloadFromDatabase(File);
 
-            
-            //  string File =
-                  string File = fileName.Text + ".xlsx";
-                 this.Download(File);
+
+  //                
+ //                this.Download(File);
             /** REFACTORED, THIS CODE MADE INTO A FUNCTION OF ITS OWN, MAKES IT REUSABLE IN OTHER PLACES
             //THIS WAS PREVIOUSLY REFACTORED ALSO
             //if (System.IO.File.Exists(Server.MapPath("~/Projects/" + fileName.Text + ".xlsx")))
