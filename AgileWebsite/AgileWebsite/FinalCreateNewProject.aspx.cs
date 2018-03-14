@@ -26,6 +26,15 @@ namespace AgileWebsite
             try
             {
                     string fn = System.IO.Path.GetFileName(FileUpload1.PostedFile.FileName);
+                    string fnExtention = System.IO.Path.GetExtension(fn);
+                    if (fnExtention != ".xlsx")
+                    {
+                        Label1.ForeColor = System.Drawing.Color.Red;
+                        Label1.Text = "Please upload an excel file type.";
+                        return;
+                    }
+                    Label1.ForeColor = System.Drawing.Color.White;
+
                     string SaveLocation = Server.MapPath("~/Projects/" + fn);
 
                     string month = DateTime.Now.Month.ToString();
