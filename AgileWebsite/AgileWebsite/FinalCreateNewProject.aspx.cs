@@ -96,13 +96,14 @@ namespace AgileWebsite
                     //Console.Write("I got Here");
 
 
-                    query = "INSERT INTO files (file_name, date_uploaded, actual_file) VALUES (@fn,@dateTimeCorrectFormat,@input)";
+                    query = "INSERT INTO files (file_name, date_uploaded, actual_file, file_size) VALUES (@fn,@dateTimeCorrectFormat,@input,@inputLength)";
                     string query2 = "INSERT INTO projects (file_ID, researcher_ID, project_info, date_submitted, project_name, RIS_ID, ass_dean_ID, dean_ID) VALUES ((SELECT MAX(file_id) FROM 17agileteam6db.files), '99C008', @projInfo, @dateSub, @projName, '0', '0', '0')";
 
                     MySqlCommand c = new MySqlCommand(query, db.GetConnectionStringForScott());
                     c.Parameters.AddWithValue("@fn", fn);
                     c.Parameters.AddWithValue("@dateTimeCorrectFormat", dateTimeCorrectFormat);
                     c.Parameters.Add("@input", MySqlDbType.LongBlob, input.Length).Value = input;
+                    c.Parameters.AddWithValue("@inputLength", input.Length);
                     int i = c.ExecuteNonQuery();
 
                     MySqlCommand c2 = new MySqlCommand(query2, db.GetConnectionStringForScott());
