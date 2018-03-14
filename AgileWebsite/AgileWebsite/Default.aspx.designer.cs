@@ -11,5 +11,23 @@ namespace AgileWebsite {
     
     
     public partial class _Default {
+        
+        /// <summary>
+        /// fileName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox fileName;
+        
+        /// <summary>
+        /// DownloadButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button DownloadButton;
     }
 }
