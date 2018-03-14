@@ -23,8 +23,8 @@ namespace AgileWebsite
 
         }
 
-        /**
-        public void UploadToDatabase(string fileName)
+        
+        public void UploadToDatabase()
         {
             MySqlConnection conn;
             MySqlCommand cmd;
@@ -40,8 +40,9 @@ namespace AgileWebsite
                "pwd=7845.at6.5487;database=17agileteam6db";
 
             //Finds file based on file name
-            SQL = "UPDATE files SET actual_file = @input WHERE file_name = @FileName";
-
+            SQL = "UPDATE files SET actual_file = @input WHERE file_name = 'placeholder'";
+            cmd.Parameters.AddWithValue("@input", FileUpload1);
+            
             try
             {
                 //opens connection to db
@@ -49,13 +50,14 @@ namespace AgileWebsite
                 cmd.Connection = conn;
                 cmd.CommandText = SQL;
                 
+                
             }
             catch (MySql.Data.MySqlClient.MySqlException ex)
             {
 
             }
         }
-        */
+        
 
         public bool DownloadFromDatabase(string fileName)
         { 
@@ -115,22 +117,13 @@ namespace AgileWebsite
 
         }
 
-        /**
+       
         public void Button2_Click(object sender, System.EventArgs e)
         {
-
-
-            Button clickedButton = (Button)sender;
-            string File = uploadfilename.Text;
-            DownloadFromDatabase(File);
-            if (DownloadFromDatabase(File) == true)
-                File = "Saved to Downloads folder";
-            else
-            {
-                File = "File does not exist, try again";
-            }
+            Button clickedButton = (Button)sender;            
+            UploadToDatabase();
         }
-        */
+        
 
         public void Button1_Click(object sender, System.EventArgs e)
         {
