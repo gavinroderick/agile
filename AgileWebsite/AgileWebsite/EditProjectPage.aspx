@@ -18,7 +18,7 @@
       <h3>Download Button Example</h3>
       <br />
     
-      <asp:TextBox id="fileName" runat="server" type="text"  />
+      <asp:TextBox id="fileName" runat="server" type="text" Width="300"  />
     
       <br />        
       
