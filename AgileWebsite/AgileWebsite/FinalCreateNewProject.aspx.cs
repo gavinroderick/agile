@@ -84,11 +84,11 @@ namespace AgileWebsite
 
                     db.OpenConnectionForScott();
 
-                    Console.Write("I got Here");
+                    //Console.Write("I got Here");
 
 
                     query = "INSERT INTO files (file_name, date_uploaded, actual_file) VALUES (@fn,@dateTimeCorrectFormat,@input)";
-                    string query2 = "INSERT INTO projects (file_ID, researcher_ID, project_info, date_submitted, project_name) VALUES ((SELECT MAX(file_id) FROM 17agileteam6db.files), '99C008', @projInfo, @dateSub, @projName)";
+                    string query2 = "INSERT INTO projects (file_ID, researcher_ID, project_info, date_submitted, project_name, RIS_ID, ass_dean_ID, dean_ID) VALUES ((SELECT MAX(file_id) FROM 17agileteam6db.files), '99C008', @projInfo, @dateSub, @projName, '0', '0', '0')";
 
                     MySqlCommand c = new MySqlCommand(query, db.GetConnectionStringForScott());
                     c.Parameters.AddWithValue("@fn", fn);
