@@ -40,13 +40,13 @@ namespace AgileWebsite {
         protected global::System.Web.UI.WebControls.Button Button1;
         
         /// <summary>
-        /// FileUpload1 control.
+        /// fileToUpload control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload FileUpload1;
+        protected global::System.Web.UI.WebControls.FileUpload fileToUpload;
         
         /// <summary>
         /// Button2 control.

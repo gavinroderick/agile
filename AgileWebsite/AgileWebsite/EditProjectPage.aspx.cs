@@ -23,7 +23,7 @@ namespace AgileWebsite
 
         }
 
-        
+        /*
         public void UploadToDatabase()
         {
             MySqlConnection conn;
@@ -40,7 +40,7 @@ namespace AgileWebsite
                "pwd=7845.at6.5487;database=17agileteam6db";
 
             //Finds file based on file name
-            SQL = "UPDATE files SET actual_file = @input WHERE file_name = 'placeholder'";
+            SQL = "UPDATE files SET actual_file = @input WHERE actual_file = 'placeholder'";
             cmd.Parameters.AddWithValue("@input", FileUpload1);
             
             try
@@ -57,7 +57,44 @@ namespace AgileWebsite
 
             }
         }
-        
+        */
+
+        public void UploadToDatabase()
+        {
+            string query;
+            DB db = new DB();
+            int FileLen = fileToUpload.PostedFile.ContentLength;
+            string fn = System.IO.Path.GetFileName(fileToUpload.PostedFile.FileName);
+            byte[] input = new byte[FileLen];
+            System.IO.Stream MyStream = fileToUpload.PostedFile.InputStream;
+            using (var binaryReader = new BinaryReader(MyStream))
+            {
+                input = binaryReader.ReadBytes((int)MyStream.Length);
+            }
+
+            db.OpenConnectionForScott();
+
+            query = "UPDATE files SET actual_file = @actual_file, file_size = @FileSize WHERE file_name = @file_name";
+            //query = "INSERT INTO files (file_name, actual_file, file_size) VALUES(@file_name, @actual_file, @FileSize)";         
+            MySqlCommand cmd = new MySqlCommand(query, db.GetConnectionStringForScott());
+            cmd.Parameters.AddWithValue("@file_name", fn);
+            //cmd.Parameters.AddWithValue("@actual_file", fileToUpload);
+            cmd.Parameters.Add("@actual_file", MySqlDbType.LongBlob, input.Length).Value = input;
+            cmd.Parameters.AddWithValue("@FileSize", (int)input.Length);
+            cmd.ExecuteNonQuery();
+
+            db.CloseConnectionForScott();
+
+            //   SQL = "UPDATE files SET actual_file = @actual_file, file_size = @FileSize WHERE actual_file = @actual_file";
+            //    cmd.Connection = conn;
+            //   cmd.CommandText = SQL;
+            //   cmd.Parameters.AddWithValue("@actual_file", fileToUpload);
+            //    cmd.Parameters.AddWithValue("@FileSize", FileSize);     
+            //   cmd.ExecuteNonQuery();
+            //   conn.Close();
+
+        }
+
 
         public bool DownloadFromDatabase(string fileName)
         { 

@@ -27,8 +27,9 @@
 
       <h3>Upload Button Example</h3>
       <br />
+      <br />        
 
-      <asp:FileUpload ID="FileUpload1" runat="server" />
+      <asp:FileUpload ID="fileToUpload" runat="server" />
       <br />
       <br />
 
