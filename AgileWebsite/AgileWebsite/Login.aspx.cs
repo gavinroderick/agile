@@ -18,8 +18,9 @@ namespace AgileWebsite
         }
         protected void SubmitEventMethod(object sender, EventArgs e)
         {
-           
-            query = "SELECT * FROM 17agileteam6db.users WHERE staff_no ='" + Username.Text + "' AND pass = '" + Password.Text + "'";
+            string username = Username.Text;
+            string pass = Password.Text;
+            query = "SELECT * FROM 17agileteam6db.users WHERE staff_no ='" + username + "' AND pass = '" + pass + "';";
             DB db = new DB();
 
             reader = db.Select(query);

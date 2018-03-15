@@ -71,7 +71,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EncryptionKeyTest.cs" />
+    <Compile Include="SigningTest.cs" />
     <Compile Include="HistoryTest.cs" />
     <Compile Include="NewProjectTest.cs" />
     <Compile Include="InsertTest.cs" />

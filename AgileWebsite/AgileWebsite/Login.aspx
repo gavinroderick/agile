@@ -11,8 +11,7 @@
         <div>
             <h1>Login</h1>
             StaffNo:
-            <asp:TextBox id="Username" runat="server" type="text" /><a href="Login.aspx">Login.aspx</a>
-            Password:
+            <asp:TextBox id="Username" runat="server" type="text" />&nbsp;Password:
             <asp:TextBox id="Password" runat="server" TextMode="Password" type="password" />
             <asp:Button id="login" runat="server" type="submit" Text="Login" onclick="SubmitEventMethod" />
             <% string failed = (string)(Session["failed"]);
