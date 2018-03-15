@@ -240,3 +240,7 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+/AgileWebsite/AgileWebsite/ris_home.aspx.designer.cs
+/AgileWebsite/AgileWebsite/ris_home.aspx.cs
+/AgileWebsite/AgileWebsite/ris_home.aspx
+/AgileWebsite/AgileWebsite.Tests

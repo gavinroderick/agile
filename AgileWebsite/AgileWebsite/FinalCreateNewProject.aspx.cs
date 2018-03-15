@@ -26,7 +26,10 @@ namespace AgileWebsite
             try
             {
                     string fn = System.IO.Path.GetFileName(FileUpload1.PostedFile.FileName);
+
+                    //validate file extention to ensure the page only accepts excel files
                     string fnExtention = System.IO.Path.GetExtension(fn);
+
                     if (fnExtention != ".xlsx")
                     {
                         Label1.ForeColor = System.Drawing.Color.Red;
@@ -34,6 +37,15 @@ namespace AgileWebsite
                         return;
                     }
                     Label1.ForeColor = System.Drawing.Color.White;
+
+                    //ensure there is a user logged in
+                    if (Session["loggedin"]== null)
+                    {
+                        Label1.ForeColor = System.Drawing.Color.Red;
+                        Label1.Text = "Please Log in to successfully upload a file.";
+                        return;
+                    }
+                    
 
                     string SaveLocation = Server.MapPath("~/Projects/" + fn);
 
@@ -97,7 +109,7 @@ namespace AgileWebsite
 
 
                     query = "INSERT INTO files (file_name, date_uploaded, actual_file, file_size) VALUES (@fn,@dateTimeCorrectFormat,@input,@inputLength)";
-                    string query2 = "INSERT INTO projects (file_ID, researcher_ID, project_info, date_submitted, project_name, RIS_ID, ass_dean_ID, dean_ID) VALUES ((SELECT MAX(file_id) FROM 17agileteam6db.files), '99C008', @projInfo, @dateSub, @projName, '0', '0', '0')";
+                    string query2 = "INSERT INTO projects (file_ID, researcher_ID, project_info, date_submitted, project_name, RIS_ID, ass_dean_ID, dean_ID) VALUES ((SELECT MAX(file_id) FROM 17agileteam6db.files), @username, @projInfo, @dateSub, @projName, '0', '0', '0')";
 
                     MySqlCommand c = new MySqlCommand(query, db.GetConnectionStringForScott());
                     c.Parameters.AddWithValue("@fn", fn);
@@ -107,6 +119,7 @@ namespace AgileWebsite
                     int i = c.ExecuteNonQuery();
 
                     MySqlCommand c2 = new MySqlCommand(query2, db.GetConnectionStringForScott());
+                    c2.Parameters.AddWithValue("@username", Session["StaffNo"].ToString());
                     c2.Parameters.AddWithValue("@projInfo", ProjectInfo.Text);
                     c2.Parameters.AddWithValue("@dateSub", dateTimeCorrectFormat);
                     c2.Parameters.AddWithValue("@projName", ProjectName.Text);
@@ -120,7 +133,7 @@ namespace AgileWebsite
 
                     ////////////////////////////////////////////////////////////////////////////////
                     //ATTEMPT 1
-                    ///////////////////////////////////////////////////////////////////////////////
+                    ////////////////////////////////////////////////////////////////////////////////
 
                         /*MyStream.Read(input, 0, FileLen);
                     
@@ -173,7 +186,26 @@ namespace AgileWebsite
                      FileUpload1.PostedFile.ContentLength + " kb<br>" +
                      "Content type: " +
                      FileUpload1.PostedFile.ContentType;
-            }
+
+
+
+                    /////////////////////////////////////////////////////////////////////////////////////////////////////
+
+                    string user = Session["StaffNo"].ToString();
+                    string comment = "Uploaded the file";
+                    string action = "Upload";
+                    string query3 = "INSERT INTO 17agileteam6db.history (project_ID, user, date_time, projectAction, Comments) VALUES ((SELECT MAX(project_id) FROM 17agileteam6db.projects), '" + user + "', NOW(), '" + action + "', '" + comment + "')";
+                    db.Insert(query3);
+                    ///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+                    //Response.BufferOutput = true;
+                    Response.Redirect("Index.aspx", false);
+                }
             catch (Exception ex)
             {
                     Label1.Text = "ERROR: " + ex.Message.ToString();
