@@ -187,7 +187,23 @@ namespace AgileWebsite
                      "Content type: " +
                      FileUpload1.PostedFile.ContentType;
 
-                    Response.BufferOutput = true;
+
+
+                    /////////////////////////////////////////////////////////////////////////////////////////////////////
+
+                    string user = Session["StaffNo"].ToString();
+                    string comment = "Uploaded the file";
+                    string action = "Upload";
+                    string query3 = "INSERT INTO 17agileteam6db.history (project_ID, user, date_time, projectAction, Comments) VALUES ((SELECT MAX(project_id) FROM 17agileteam6db.projects), '" + user + "', NOW(), '" + action + "', '" + comment + "')";
+                    db.Insert(query3);
+                    ///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+                    //Response.BufferOutput = true;
                     Response.Redirect("Index.aspx", false);
                 }
             catch (Exception ex)
