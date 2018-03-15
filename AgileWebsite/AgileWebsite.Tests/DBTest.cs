@@ -109,5 +109,13 @@ namespace AgileWebsite
                 return false;
             }
         }
+
+        public bool History(int project_ID, string user, string action, string comment)
+        {
+
+            string query = "INSERT INTO 17agileteam6db.history (project_ID, user, Historycol, date_time, projectAction, Comments) VALUES (" + project_ID + ", '" + user + "', ' ', NOW(), '" + action + "', '" + comment + "')";
+
+            return Insert(query);
+        }
     }
 }
