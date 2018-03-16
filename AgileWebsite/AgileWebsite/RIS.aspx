@@ -18,8 +18,8 @@
                         <br />
                         <div class="col-4">
                             
-                            <button type="button" class="btn btn-primary">Upload</button>
-                            <button type="button" class="btn btn-secondary">Download</button>
+                            <asp:Button ID="uploadButton" runat="server"  class="btn btn-success" OnClick="uploadButton_Click" Text="Upload" />&nbsp;<br />
+                            <asp:Button ID="downloadButton" runat="server" class="btn btn-success" OnClick="downloadButton_Click" Text="Download Project" />&nbsp;<br />
                             <asp:Button ID="button" runat="server" class="btn btn-success" Text="Approve" tag = projectID[m] />
                         </div>                       
                     </div>

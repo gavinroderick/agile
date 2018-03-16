@@ -278,7 +278,7 @@
     <Content Include="Scripts\umd\popper.min.js" />
     <Content Include="tester.aspx" />
     <Content Include="WebForm1.aspx" />
-    <Content Include="EditProjectPage.aspx" />
+    <Content Include="DownloadProjectPage.aspx" />
     <Content Include="Projects\tester1.pdf" />
     <Content Include="Projects\Test31.xlsx" />
     <Content Include="Projects\Empty.xlsx" />
@@ -535,12 +535,12 @@
     <Compile Include="WebForm1.aspx.designer.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
-    <Compile Include="EditProjectPage.aspx.cs">
-      <DependentUpon>EditProjectPage.aspx</DependentUpon>
+    <Compile Include="DownloadProjectPage.aspx.cs">
+      <DependentUpon>DownloadProjectPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="EditProjectPage.aspx.designer.cs">
-      <DependentUpon>EditProjectPage.aspx</DependentUpon>
+    <Compile Include="DownloadProjectPage.aspx.designer.cs">
+      <DependentUpon>DownloadProjectPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>

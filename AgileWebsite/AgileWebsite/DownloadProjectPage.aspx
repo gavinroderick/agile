@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="EditProjectPage.aspx.cs" Inherits="AgileWebsite.EditProjectPage" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="DownloadProjectPage.aspx.cs" Inherits="AgileWebsite.DownloadProjectPage" %>
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
@@ -23,19 +23,6 @@
       <br />        
       
       <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Download File" />&nbsp;<br />
-    
-
-      <h3>Upload Button Example</h3>
-      <br />
-      <br />        
-
-      <asp:FileUpload ID="fileToUpload" runat="server" />
-      <br />
-      <br />
-
-      <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Upload File" />&nbsp;<br />
-      <br />
-     
       
      
 </form>

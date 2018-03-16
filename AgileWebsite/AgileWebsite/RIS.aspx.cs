@@ -96,5 +96,15 @@ namespace AgileWebsite
         {
             
         }
+
+        public void uploadButton_Click(object sender, System.EventArgs e)
+        {
+            Response.Redirect("~/UploadProject.aspx");
+        }
+
+        public void downloadButton_Click(object sender, System.EventArgs e)
+        {
+            Response.Redirect("~/DownloadProjectPage.aspx");
+        }
     }
 }
