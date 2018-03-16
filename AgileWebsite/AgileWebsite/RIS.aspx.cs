@@ -94,7 +94,16 @@ namespace AgileWebsite
 
         protected void Accepted(object sender, EventArgs e)
         {
-            
+            Button button = sender as Button;
+            string role = "RIS";
+            System.Diagnostics.Debug.WriteLine("This is something " + button.Attributes["Param"].ToString());
+           // int project_ID = 2;
+            DB db = new DB();
+            string query = "UPDATE 17agileteam6db.projects SET " + role + "_accepted = 1 WHERE project_ID = " + button.Attributes["Param"].ToString() ;
+
+            db.Insert(query);
+
+
         }
     }
 }

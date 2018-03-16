@@ -13,14 +13,15 @@
                         <div class="col-8">
                             <h4 class="card-title"><%=projectName[m] %></h4>
                              <%System.Diagnostics.Debug.WriteLine(m); %>
+                            
                             <h6 class="card-subtitle mb-2 text-muted">Researcher: <%=firstName[m]%>  <%=lastName[m]%> - <%=department[m] %></h6>
                         </div>
                         <br />
                         <div class="col-4">
-                            
+ 
                             <button type="button" class="btn btn-primary">Upload</button>
                             <button type="button" class="btn btn-secondary">Download</button>
-                            <asp:Button ID="button" runat="server" class="btn btn-success" Text="Approve" tag = projectID[m] />
+                            <asp:Button ID="button" runat="server" Param=projectID[m].ToString() class="btn btn-success" Text="Approve" />
                         </div>                       
                     </div>
                     
