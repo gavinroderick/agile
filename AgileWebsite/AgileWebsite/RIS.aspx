@@ -20,7 +20,7 @@
                             
                             <button type="button" class="btn btn-primary">Upload</button>
                             <button type="button" class="btn btn-secondary">Download</button>
-                            <button type="button" class="btn btn-success">Approve</button>
+                            <asp:Button ID="Button" runat="server" class="btn btn-success" Text="Approve" />
                         </div>                       
                     </div>
                     

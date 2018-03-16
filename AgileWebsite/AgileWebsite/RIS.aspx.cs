@@ -91,5 +91,10 @@ namespace AgileWebsite
 
             }
         }
+
+        protected void Accepted(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
