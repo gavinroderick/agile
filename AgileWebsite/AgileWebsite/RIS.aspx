@@ -20,7 +20,7 @@
                             
                             <button type="button" class="btn btn-primary">Upload</button>
                             <button type="button" class="btn btn-secondary">Download</button>
-                            <asp:Button ID="Button" runat="server" class="btn btn-success" Text="Approve" />
+                            <asp:Button ID="button" runat="server" class="btn btn-success" Text="Approve" tag = projectID[m] />
                         </div>                       
                     </div>
                     

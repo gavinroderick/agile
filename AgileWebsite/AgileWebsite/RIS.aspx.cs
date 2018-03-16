@@ -45,7 +45,7 @@ namespace AgileWebsite
             {
                 while (reader.Read())
                 {
-                    for (int n = 0; n < 7; n++)
+                    for (int n = 0; n < 6; n++)
                     {
                         data[i] += reader.GetString(n) + ',';
                     }
