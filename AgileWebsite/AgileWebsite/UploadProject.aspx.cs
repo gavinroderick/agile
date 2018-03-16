@@ -19,19 +19,32 @@ namespace AgileWebsite
         
         }
 
-        public void UploadToDatabase()
+        public bool UploadToDatabase()
         {
+            if (!uploadFile.HasFile)
+            {
+                return false;
+            }
+
             string query;
             DB db = new DB();
             int FileLen = uploadFile.PostedFile.ContentLength;
             string fn = System.IO.Path.GetFileName(uploadFile.PostedFile.FileName);
+
+            string fnExtention = System.IO.Path.GetExtension(fn);          
             byte[] input = new byte[FileLen];
             System.IO.Stream MyStream = uploadFile.PostedFile.InputStream;
+
+
             using (var binaryReader = new BinaryReader(MyStream))
             {
                 input = binaryReader.ReadBytes((int)MyStream.Length);
             }
 
+            if (fnExtention != ".xlsx")
+            {
+                return false;
+            }
             db.OpenConnectionForScott();
 
             query = "UPDATE files SET actual_file = @actual_file, file_size = @FileSize WHERE file_name = @file_name";
@@ -41,18 +54,37 @@ namespace AgileWebsite
             //cmd.Parameters.AddWithValue("@actual_file", fileToUpload);
             cmd.Parameters.Add("@actual_file", MySqlDbType.LongBlob, input.Length).Value = input;
             cmd.Parameters.AddWithValue("@FileSize", (int)input.Length);
-            cmd.ExecuteNonQuery();
+            int affected = cmd.ExecuteNonQuery();
 
             db.CloseConnectionForScott();
+
+            if (affected > 0)
+                return true;
+            else
+                return false;
         }
 
 
         public void Button2_Click(object sender, System.EventArgs e)
         {
             Button clickedButton = (Button)sender;            
-            UploadToDatabase();
+            bool valid = UploadToDatabase();
+            if(valid == true)
+            {
+                uploadLabel.ForeColor = System.Drawing.Color.Green;
+                uploadLabel.Text = "Upload successful";
+            }
+            else if(valid == false)
+            {
+                uploadLabel.ForeColor = System.Drawing.Color.Red;
+                uploadLabel.Text = "This file is not valid";
+            }
         }
-    
-        
+
+        public void returnButton_Click(object sender, System.EventArgs e)
+        {
+            Response.Redirect("~/ris.aspx");
+        }
+
     }
 }

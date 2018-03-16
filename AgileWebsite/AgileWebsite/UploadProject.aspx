@@ -15,15 +15,21 @@
    
        <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />
   
-      <h3>Upload an Edit</h3>
       <br />
+  
+      <h3>Upload an Edited File</h3>
       <br />        
 
+      <asp:Label ID="uploadLabel" runat="server" Text="Please upload an excel file which exists in a project:"  />    <br />     
       <asp:FileUpload ID="uploadFile" runat="server" />
       <br />
       <br />
 
+      
       <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Upload File" />&nbsp;<br />
+      <br />
+
+      <asp:Button ID="returnButton" runat="server" OnClick="returnButton_Click" Text="Return to Menu" />&nbsp;<br />
       <br />
        
 </form>
