@@ -16,11 +16,7 @@ namespace AgileWebsite
     {
         void Page_Load(Object sender, EventArgs e)
         {
-           //string fileName = textBox1.Text      
-            // Manually register the event-handling method for
-            // the Click event of the Button control.
-            //     DownloadButton.Click += new EventHandler(this.DownloadButton_Click);
-
+           
         }
 
         /*
@@ -162,7 +158,7 @@ namespace AgileWebsite
         public void Download(string fileName)
         {
 
-            
+
             if (System.IO.File.Exists(Server.MapPath("~/Projects/" + fileName)))
             {
                 Response.ContentType = "Application/.xlsx";
@@ -179,5 +175,11 @@ namespace AgileWebsite
                 Response.Write("This file doesnt exist.");
             }
         }
+
+        public void returnButton_Click(object sender, System.EventArgs e)
+        {
+            Response.Redirect("~/ris.aspx");
+        }
+
     }
 }

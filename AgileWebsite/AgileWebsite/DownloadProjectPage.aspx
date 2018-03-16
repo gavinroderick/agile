@@ -15,15 +15,18 @@
    
        <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />
     
-      <h3>Download Button Example</h3>
+      <h3>Download a Project</h3>
       <br />
-    
+      <asp:Label ID="Label1" runat="server" Text="Please enter the associated file to the Project you would like to download."  />    <br />
+      <asp:Label ID="Label2" runat="server" Text="This can be found on at the menu page if unknown. "  /> <br /><br />
       <asp:TextBox id="fileName" runat="server" type="text" Width="300"  />
-    
+      <asp:Label ID="xlsxlabel" runat="server" Text=".xlsx"  />    <br />
       <br />        
       
-      <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Download File" />&nbsp;<br />
-      
+      <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Download File" />&nbsp;
+          <br /><br />
+      <asp:Button ID="returnButton" runat="server" OnClick="returnButton_Click" Text="Return to Menu" />&nbsp;<br />
+      <br />
      
 </form>
 </body>

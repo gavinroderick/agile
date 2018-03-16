@@ -14,6 +14,7 @@
                             <h4 class="card-title"><%=projectName[m] %></h4>
                              <%System.Diagnostics.Debug.WriteLine(m); %>
                             <h6 class="card-subtitle mb-2 text-muted">Researcher: <%=firstName[m]%>  <%=lastName[m]%> - <%=department[m] %></h6>
+                            <h6 class="card-subtitle mb-2 text-muted">Associated File: <%=fileName[m]%></h6>
                         </div>
                         <br />
                         <div class="col-4">
