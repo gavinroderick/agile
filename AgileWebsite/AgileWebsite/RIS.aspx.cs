@@ -45,7 +45,7 @@ namespace AgileWebsite
             {
                 while (reader.Read())
                 {
-                    for (int n = 0; n < 7; n++)
+                    for (int n = 0; n < 6; n++)
                     {
                         data[i] += reader.GetString(n) + ',';
                     }
@@ -90,6 +90,30 @@ namespace AgileWebsite
                 System.Diagnostics.Debug.WriteLine(department[j]);
 
             }
+        }
+
+        protected void Accepted(object sender, EventArgs e)
+        {
+            Button button = sender as Button;
+            string role = "RIS";
+            System.Diagnostics.Debug.WriteLine("This is something " + button.Attributes["Param"].ToString());
+           // int project_ID = 2;
+            DB db = new DB();
+            string query = "UPDATE 17agileteam6db.projects SET " + role + "_accepted = 1 WHERE project_ID = " + button.Attributes["Param"].ToString() ;
+
+            db.Insert(query);
+
+
+        }
+
+        public void uploadButton_Click(object sender, System.EventArgs e)
+        {
+            Response.Redirect("~/UploadProject.aspx");
+        }
+
+        public void downloadButton_Click(object sender, System.EventArgs e)
+        {
+            Response.Redirect("~/DownloadProjectPage.aspx");
         }
     }
 }

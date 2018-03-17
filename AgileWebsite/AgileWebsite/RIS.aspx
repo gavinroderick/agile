@@ -14,13 +14,14 @@
                             <h4 class="card-title"><%=projectName[m] %></h4>
                              <%System.Diagnostics.Debug.WriteLine(m); %>
                             <h6 class="card-subtitle mb-2 text-muted">Researcher: <%=firstName[m]%>  <%=lastName[m]%> - <%=department[m] %></h6>
+                            <h6 class="card-subtitle mb-2 text-muted">Associated File: <%=fileName[m]%></h6>
                         </div>
                         <br />
                         <div class="col-4">
                             
-                            <button type="button" class="btn btn-primary">Upload</button>
-                            <button type="button" class="btn btn-secondary">Download</button>
-                            <button type="button" class="btn btn-success">Approve</button>
+                            <asp:Button ID="uploadButton" runat="server"  class="btn btn-success" OnClick="uploadButton_Click" Text="Upload" />&nbsp;<br />
+                            <asp:Button ID="downloadButton" runat="server" class="btn btn-success" OnClick="downloadButton_Click" Text="Download Project" />&nbsp;<br />
+                            <asp:Button ID="button" runat="server" class="btn btn-success" Text="Approve" tag = projectID[m] />
                         </div>                       
                     </div>
                     
