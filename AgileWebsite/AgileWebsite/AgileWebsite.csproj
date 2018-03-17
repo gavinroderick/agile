@@ -233,7 +233,6 @@
     <Content Include="Login.aspx" />
     <Content Include="LoginTest.aspx" />
     <Content Include="NewProject.aspx" />
-    <Content Include="NewRequest.aspx" />
     <Content Include="Register.aspx" />
     <Content Include="ris.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -276,6 +275,7 @@
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
     <Content Include="tester.aspx" />
+    <Content Include="ViewFinishedProjects.aspx" />
     <Content Include="WebForm1.aspx" />
     <Content Include="EditProjectPage.aspx" />
     <Content Include="Projects\tester1.pdf" />
@@ -480,13 +480,6 @@
     <Compile Include="NewProject.aspx.designer.cs">
       <DependentUpon>NewProject.aspx</DependentUpon>
     </Compile>
-    <Compile Include="NewRequest.aspx.cs">
-      <DependentUpon>NewRequest.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="NewRequest.aspx.designer.cs">
-      <DependentUpon>NewRequest.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Register.aspx.cs">
       <DependentUpon>Register.aspx</DependentUpon>
@@ -512,6 +505,13 @@
     <Compile Include="Startup.cs" />
     <Compile Include="tester.aspx.designer.cs">
       <DependentUpon>tester.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewFinishedProjects.aspx.cs">
+      <DependentUpon>ViewFinishedProjects.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewFinishedProjects.aspx.designer.cs">
+      <DependentUpon>ViewFinishedProjects.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>

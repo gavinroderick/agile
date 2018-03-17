@@ -10,6 +10,6 @@
 namespace AgileWebsite {
     
     
-    public partial class NewRequest {
+    public partial class ViewFinishedProjects {
     }
 }
