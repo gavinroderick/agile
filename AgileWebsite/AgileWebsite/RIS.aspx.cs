@@ -40,23 +40,30 @@ namespace AgileWebsite
             //String[] rows = new String[1];
             int i = 0;
 
-            reader = dB.Select(query);
-            if (reader.HasRows)
+            try
             {
-                while (reader.Read())
+                reader = dB.Select(query);
+                if (reader.HasRows)
                 {
-                    for (int n = 0; n < 6; n++)
+                    while (reader.Read())
                     {
-                        data[i] += reader.GetString(n) + ',';
+                        for (int n = 0; n < 6; n++)
+                        {
+                            data[i] += reader.GetString(n) + ',';
+                        }
+
+
+
+                        i++;
+
+                        Array.Resize<String>(ref data, i + 1);
+
                     }
-
-
-
-                    i++;
-
-                    Array.Resize<String>(ref data, i + 1);
-
                 }
+            }
+            catch
+            {
+                // nothing
             }
 
             // String info = new String[][];

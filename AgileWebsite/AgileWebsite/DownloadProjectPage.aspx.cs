@@ -181,5 +181,10 @@ namespace AgileWebsite
             Response.Redirect("~/ris.aspx");
         }
 
+        public void return_finished_projects(object sender, System.EventArgs e)
+        {
+            Response.Redirect("~/ViewFinishedProjects.aspx");
+        }
+
     }
 }

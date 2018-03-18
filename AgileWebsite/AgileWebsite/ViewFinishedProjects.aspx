@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
     <div>
-        <%for (int m = 0; m < data.Count()-1; m++) {  %>
+        <%for (int k = 0; k < data.Count()-1; k++) {  %>
               <%System.Diagnostics.Debug.WriteLine(data.Count()); %>
 
             <div class="card">
@@ -10,30 +10,23 @@
                 <div class="card-block">
                     <div class="row">
                         <div class="col-8">
-                            <h4 class="card-title"><%=projectName[m] %></h4>
-                             <%System.Diagnostics.Debug.WriteLine(m); %>
-                            <h6 class="card-subtitle mb-2 text-muted">Researcher: <%=firstName[m]%>  <%=lastName[m]%> - <%=department[m] %></h6>
+                            <h4 class="card-title"><%=projectName[k] %></h4>
+                             <%System.Diagnostics.Debug.WriteLine(k); %>
+                            <h6 class="card-subtitle mb-2 text-muted">Researcher: <%=firstName[k]%>  <%=lastName[k]%> - <%=department[k] %></h6>
+                            <h6 class="card-subtitle mb-2 text-muted">Associated File: <%=fileName[k]%></h6>
                         </div>
                         <br />
                         <div class="col-4">
                             
-                            <button type="button" class="btn btn-primary">Print</button>
-                            <button type="button" class="btn btn-secondary">Download</button>
+                            <asp:Button ID="btn_print" runat="server" type="button" OnClick="print_method" class="btn btn-primary" Text="Print" />&nbsp; </asp:Button>
+                            <asp:Button ID="btn_download" runat="server" type="button" OnClick="download_method" class="btn btn-secondary" Text="Download" />&nbsp; </asp:Button>
+
                         </div>                       
-                    </div>
-                    
-                
-                </div>
-                
-                
+                    </div>    
+                </div>              
             </div>
             <br />
          <%} %>
-      
-            
-            
-            
-
 
         </div>
 </asp:Content>

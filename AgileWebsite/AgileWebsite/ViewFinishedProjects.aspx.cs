@@ -18,23 +18,26 @@ namespace AgileWebsite
         public String[] RIS_accepted = new String[1];
         public String[] ass_dean_accepted = new String[1];
         public String[] dean_accepted = new String[1];
+        public String[] fileName = new String[1];
         public String[] data = new String[1];
+     
 
         protected void Page_Load(object sender, EventArgs e)
         {
             DB database = new DB();
-            String query = "SELECT project_name, ass_dean_accepted, dean_accepted, RIS_accepted, first_name, last_name, department FROM projects, users WHERE RIS_accepted IS NOT NULL AND ass_dean_accepted IS NOT NULL AND dean_accepted IS NOT NULL; ";
+            String query = "SELECT users.first_name, users.last_name, users.department, projects.project_name, projects.RIS_accepted, projects.ass_dean_accepted, projects.dean_accepted, files.file_name FROM users, projects, files WHERE projects.RIS_accepted IS NOT NULL AND projects.ass_dean_accepted IS NOT NULL AND projects.dean_accepted IS NOT NULL AND users.staff_no = projects.researcher_ID AND files.file_ID = projects.file_ID; ";
 
             int i = 0;
 
             reader = database.Select(query);
+            
             try
             {
                 if (reader.HasRows)
                 {
                     while (reader.Read())
                     {
-                        for (int n = 0; n < 6; n++)
+                        for (int n = 0; n < 8; n++)
                         {
                             data[i] += reader.GetString(n) + ',';
                         }
@@ -45,6 +48,7 @@ namespace AgileWebsite
 
                     }
                 }
+                
             }
             catch
             {
@@ -60,6 +64,7 @@ namespace AgileWebsite
                 Array.Resize<String>(ref RIS_accepted, p + 1);
                 Array.Resize<String>(ref ass_dean_accepted, p + 1);
                 Array.Resize<String>(ref dean_accepted, p + 1);
+                Array.Resize<String>(ref fileName, p + 1);
 
                 System.Diagnostics.Debug.WriteLine(data[p]);
 
@@ -71,6 +76,7 @@ namespace AgileWebsite
                 RIS_accepted[p] = info[4];
                 ass_dean_accepted[p] = info[5];
                 dean_accepted[p] = info[6];
+                fileName[p] = info[7];
 
                 System.Diagnostics.Debug.WriteLine(firstName[p]);
                 System.Diagnostics.Debug.WriteLine(lastName[p]);
@@ -79,9 +85,21 @@ namespace AgileWebsite
                 System.Diagnostics.Debug.WriteLine(RIS_accepted[p]);
                 System.Diagnostics.Debug.WriteLine(ass_dean_accepted[p]);
                 System.Diagnostics.Debug.WriteLine(dean_accepted[p]);
+                System.Diagnostics.Debug.WriteLine(fileName[p]);
 
             }
 
+        }
+
+        public void print_method(object sender, System.EventArgs e)
+        {
+            //Response.Redirect("~/PrintProject.aspx");
+        }
+
+        public void download_method(object sender, System.EventArgs e)
+        {
+            Response.Redirect("~/DownloadProjectPage.aspx");
+            
         }
     }
 }
