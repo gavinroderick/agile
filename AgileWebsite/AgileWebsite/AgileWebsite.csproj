@@ -204,6 +204,7 @@
     <Content Include="Account\Register.aspx" />
     <Content Include="Account\ResetPassword.aspx" />
     <Content Include="Account\ResetPasswordConfirmation.aspx" />
+    <Content Include="ass_dean.aspx" />
     <Content Include="Content\img\bg.png" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -213,6 +214,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\cover.css" />
+    <Content Include="Dean.aspx" />
     <Content Include="docs\MySqlCommand.xml" />
     <Content Include="docs\MySqlCommandBuilder.xml" />
     <Content Include="docs\MySqlConnection.xml" />
@@ -224,6 +226,7 @@
     <Content Include="docs\MySqlParameter.xml" />
     <Content Include="docs\MySqlParameterCollection.xml" />
     <Content Include="docs\MySqlTransaction.xml" />
+    <Content Include="researcher.aspx" />
     <Content Include="researcherOptions.aspx" />
     <Content Include="risOptions.aspx" />
     <Content Include="UploadProject.aspx" />
@@ -436,13 +439,34 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="ass_dean.aspx.cs">
+      <DependentUpon>ass_dean.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ass_dean.aspx.designer.cs">
+      <DependentUpon>ass_dean.aspx</DependentUpon>
+    </Compile>
     <Compile Include="DB.cs" />
+    <Compile Include="Dean.aspx.cs">
+      <DependentUpon>Dean.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Dean.aspx.designer.cs">
+      <DependentUpon>Dean.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="researcher.aspx.cs">
+      <DependentUpon>researcher.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="researcher.aspx.designer.cs">
+      <DependentUpon>researcher.aspx</DependentUpon>
     </Compile>
     <Compile Include="researcherOptions.aspx.cs">
       <DependentUpon>researcherOptions.aspx</DependentUpon>

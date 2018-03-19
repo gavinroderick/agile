@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 
 namespace AgileWebsite
 {
-    public partial class ris_home : System.Web.UI.Page
+    public partial class Dean : System.Web.UI.Page
     {
         MySqlDataReader reader;
         public String[] data = new String[1];
@@ -22,8 +22,8 @@ namespace AgileWebsite
         protected void Page_Load(object sender, EventArgs e)
         {
             DB dB = new DB();
-            String query = "SELECT project_ID, project_name, files.file_name, users.first_name, users.last_name, users.department, RIS_ID  FROM PROJECTS  JOIN users ON researcher_ID = users.staff_no  JOIN files ON projects.file_ID = files.file_ID WHERE RIS_accepted = 0 LIMIT 0, 1000";
-            
+            String query = "SELECT project_ID, project_name, files.file_name, users.first_name, users.last_name, users.department, RIS_ID  FROM PROJECTS  JOIN users ON researcher_ID = users.staff_no  JOIN files ON projects.file_ID = files.file_ID WHERE dean_accepted = 0 LIMIT 0, 1000";
+
             int i = 0;
 
             try
