@@ -11,7 +11,9 @@ namespace AgileWebsite
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            DB db = new DB();
 
+            string fn = firstName.Text;
         }
     }
 }
