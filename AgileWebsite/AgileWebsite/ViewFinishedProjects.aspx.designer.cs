@@ -13,15 +13,6 @@ namespace AgileWebsite {
     public partial class ViewFinishedProjects {
         
         /// <summary>
-        /// Control btn_print.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_print;
-        
-        /// <summary>
         /// Control btn_download.
         /// </summary>
         /// <remarks>
