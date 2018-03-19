@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Ris Options" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="risOptions.aspx.cs" Inherits="AgileWebsite.risOptions" %>
+﻿<%@ Page Title="RIS Options" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="risOptions.aspx.cs" Inherits="AgileWebsite.risOptions" %>
 
 <asp:Content ID="Content" ContentPlaceHolderID="MainContent" runat="server">
 
@@ -12,4 +12,3 @@
      </div>
 
 </asp:Content>
-
