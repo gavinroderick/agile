@@ -224,6 +224,7 @@
     <Content Include="docs\MySqlParameter.xml" />
     <Content Include="docs\MySqlParameterCollection.xml" />
     <Content Include="docs\MySqlTransaction.xml" />
+    <Content Include="risOptions.aspx" />
     <Content Include="UploadProject.aspx" />
     <Content Include="failedLogin.aspx" />
     <Content Include="Account\Web.config" />
@@ -441,6 +442,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="risOptions.aspx.cs">
+      <DependentUpon>risOptions.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="risOptions.aspx.designer.cs">
+      <DependentUpon>risOptions.aspx</DependentUpon>
     </Compile>
     <Compile Include="UploadProject.aspx.cs">
       <DependentUpon>UploadProject.aspx</DependentUpon>

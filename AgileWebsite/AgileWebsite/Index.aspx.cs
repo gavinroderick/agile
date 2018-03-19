@@ -47,7 +47,7 @@ namespace AgileWebsite
                     Response.Redirect("FinalCreateNewProject.aspx");
                     break;
                 case "1":
-                    Response.Redirect("ris.aspx");
+                    Response.Redirect("risOptions.aspx");
                     break;
                 case "2":
                     Response.Redirect("assistantdean.aspx");

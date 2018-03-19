@@ -91,11 +91,6 @@ namespace AgileWebsite
 
         }
 
-        public void print_method(object sender, System.EventArgs e)
-        {
-            //Response.Redirect("~/PrintProject.aspx");
-        }
-
         public void download_method(object sender, System.EventArgs e)
         {
             Response.Redirect("~/DownloadProjectPage.aspx");

@@ -18,7 +18,6 @@
                         <br />
                         <div class="col-4">
                             
-                            <asp:Button ID="btn_print" runat="server" type="button" OnClick="print_method" class="btn btn-primary" Text="Print" />&nbsp; </asp:Button>
                             <asp:Button ID="btn_download" runat="server" type="button" OnClick="download_method" class="btn btn-secondary" Text="Download" />&nbsp; </asp:Button>
 
                         </div>                       
