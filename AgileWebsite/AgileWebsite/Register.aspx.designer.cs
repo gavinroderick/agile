@@ -10,7 +10,7 @@
 namespace AgileWebsite {
     
     
-    public partial class _Default {
+    public partial class Register {
         
         /// <summary>
         /// firstName control.
@@ -76,12 +76,12 @@ namespace AgileWebsite {
         protected global::System.Web.UI.WebControls.TextBox password;
         
         /// <summary>
-        /// register control.
+        /// approveButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button register;
+        protected global::System.Web.UI.WebControls.Button approveButton;
     }
 }

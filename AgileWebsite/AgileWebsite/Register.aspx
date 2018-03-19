@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Home Page" Language="C#" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="AgileWebsite._Default" %>
+﻿<%@ Page Title="Home Page" Language="C#" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="AgileWebsite.Register" %>
 
 <html lang="en">
   <head>
@@ -29,11 +29,11 @@
                     <form class="form-signin" runat="server">
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="inputFirstName">First Name</label>
+                                <label for="firstName">First Name</label>
                                 <asp:TextBox ID="firstName" runat="server" AutoCompleteType="FirstName" CssClass="form-control" placeholder="First Name" required=true />
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="inputSurname">Surname</label>
+                                <label for="surname">Surname</label>
                                 <asp:TextBox ID="surname" runat="server" AutoCompleteType="LastName" CssClass="form-control" placeholder="Surname" required=true />
                             </div>
                         </div>
@@ -54,10 +54,10 @@
                                 <label for="inputRole">Role</label>
                                 <asp:DropDownList ID="role" runat="server" CssClass="form-control" >
                                     <asp:ListItem>Choose...</asp:ListItem>
-                                    <asp:ListItem>Research Applicant</asp:ListItem>
-                                    <asp:ListItem>RIS Staff</asp:ListItem>
-                                    <asp:ListItem>Associate Dean</asp:ListItem>
-                                    <asp:ListItem>Dean</asp:ListItem>
+                                    <asp:ListItem Value="0">Research Applicant</asp:ListItem>
+                                    <asp:ListItem Value="1">RIS Staff</asp:ListItem>
+                                    <asp:ListItem Value="2">Associate Dean</asp:ListItem>
+                                    <asp:ListItem Value="3">Dean</asp:ListItem>
                                 </asp:DropDownList>
                             </div>
                         </div>
@@ -66,7 +66,8 @@
                             <asp:TextBox ID="password" runat="server" type="password" CssClass="form-control" placeholder="Password" required="true"/>
                         </div>
                        
-                        <asp:Button ID="register" runat="server" CssClass="btn btn-lg btn-success btn-block" type="submit" Text="Register"/>
+                        <%--<asp:Button ID="Submit" runat="server" CssClass="btn btn-lg btn-success btn-block" type="Submit" Text="Register" Value="Submit" OnClick="Submit"/>--%>
+                        <asp:Button ID="approveButton" runat="server" class="btn btn-success"  OnClick="Accepted" Value="Approve" Text="Approve"/>
                     </form>
                     <p class="text-center"><a href="Login.aspx">Or log in here</a></p>
         </main>
