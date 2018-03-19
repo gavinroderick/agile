@@ -101,25 +101,45 @@ namespace AgileWebsite
 
         protected void Accepted(object sender, EventArgs e)
         {
+            string projectID = projID.Text;
+            string userID = (string)Session["StaffNo"];
+            string role = getRole();
+
             Button button = (Button)sender;
-            string role = "RIS";
-           // int project_ID = 2;
             DB db = new DB();
-            System.Diagnostics.Debug.WriteLine(button.CommandName);
-            string query = "UPDATE 17agileteam6db.projects SET " + role + "_accepted = 1 WHERE project_ID = " + 22;
 
-            db.Insert(query);
-
-
+            string updateSigned = "UPDATE 17agileteam6db.projects SET " + role + "_accepted = 1 WHERE project_ID = " + projectID;
+            string updateIDSigned = "UPDATE 17agileteam6db.projects SET " + role + "_ID =" + userID + " WHERE project_ID = " + projectID;
+            db.Insert(updateSigned);
+            db.Insert(updateIDSigned);
         }
 
-        public void uploadButton_Click(object sender, System.EventArgs e)
+
+        private string getRole()
         {
+            string role = (string)Session["role"];
+            switch (role)
+            {
+                case "1":
+                    return "RIS";
+                case "2":
+                    return "ass_dean";
+                case "3":
+                    return "dean";
+            }
+            return " ";
+        }
+
+        public void Upload(object sender, System.EventArgs e)
+        {
+            string projectID = projID.Text;
             Response.Redirect("~/UploadProject.aspx");
         }
 
-        public void downloadButton_Click(object sender, System.EventArgs e)
+
+        public void Download(object sender, System.EventArgs e)
         {
+            string projectID = projID.Text;
             Response.Redirect("~/DownloadProjectPage.aspx");
         }
     }
