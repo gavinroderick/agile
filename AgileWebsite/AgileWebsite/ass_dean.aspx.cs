@@ -30,7 +30,7 @@ namespace AgileWebsite
             {
                 Response.Redirect("Index.aspx", false);
             }
-            else  //CHECK & ENSURE USER IS RESEARCHER
+            else  //CHECK & ENSURE USER IS Associate Dean
             {
                 DB db = new DB();
                 string staffID = (string)(Session["StaffNo"]);
@@ -67,12 +67,12 @@ namespace AgileWebsite
             }
 
             // String info = new String[][];
-
+            
             for (int j = 0; j < i; j++)
             {
                 System.Diagnostics.Debug.WriteLine("++++++++++++++++++++++++++++++++++");
                 //System.Diagnostics.Debug.WriteLine(data[j]);
-
+                //Resizes array based on number of projects
                 Array.Resize<String>(ref projectID, j + 1);
                 Array.Resize<String>(ref projectName, j + 1);
                 Array.Resize<String>(ref fileName, j + 1);
@@ -99,6 +99,7 @@ namespace AgileWebsite
             }
         }
 
+        //Gets details of assocate dean
         private string getDetails(DB db, string staffID)
         {
             string roleQuery = "SELECT first_name, last_name, department, role from 17agileteam6db.users WHERE staff_no = '" + staffID + "';";
@@ -107,6 +108,7 @@ namespace AgileWebsite
             return reader.GetString("role");
         }
 
+        //Redirects to correct homepage
         private void Redirect(string role)
         {
             switch (role)
@@ -129,6 +131,7 @@ namespace AgileWebsite
             }
         }
 
+        //Allows associate dean to approve a project
         protected void Accepted(object sender, EventArgs e)
         {
             string projectID = projID.Text;
@@ -157,7 +160,7 @@ namespace AgileWebsite
 
         }
 
-
+        //Returns the role of the user
         private string getRole()
         {
             string role = (string)Session["role"];
@@ -173,13 +176,14 @@ namespace AgileWebsite
             return " ";
         }
 
+        //Redirects to upload page
         public void Upload(object sender, System.EventArgs e)
         {
             string projectID = projID.Text;
             Response.Redirect("~/UploadProject.aspx");
         }
 
-
+        //Reirects to download page
         public void Download(object sender, System.EventArgs e)
         {
             string projectID = projID.Text;

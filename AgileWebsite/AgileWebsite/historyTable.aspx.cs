@@ -27,15 +27,17 @@ namespace AgileWebsite
 
         public string getWhileLoopData()
         {
+            //Connect to databse
             DB db = new DB();
             string htmlStr = "";
             //db.GetConnectionStringForScott();
             MySqlConnection thisConnection = db.GetConnectionStringForScott();
             MySqlCommand thisCommand = thisConnection.CreateCommand();
+            //Stablish what we want to see in the table
             thisCommand.CommandText = "SELECT * FROM history ";
             thisConnection.Open();
             MySqlDataReader reader = thisCommand.ExecuteReader();
-
+            //Reading process (from the SQL table)
             while (reader.Read())
             {
                 int id = reader.GetInt32(0);

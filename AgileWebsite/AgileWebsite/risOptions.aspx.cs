@@ -5,6 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+//This page allows RIS to select what they want to do
+
+
 namespace AgileWebsite
 {
     public partial class risOptions : System.Web.UI.Page
