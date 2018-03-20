@@ -147,6 +147,8 @@ namespace AgileWebsite
             string updateIDSigned = "UPDATE 17agileteam6db.projects SET " + role + "_ID =" + userID + " WHERE project_ID = " + projectID;
             db.Insert(updateSigned);
             db.Insert(updateIDSigned);
+            db.History(Int32.Parse(projectID), role, "Signed", "Project Has been Signed");
+            db.Email("s.burns@dundee.ac.ukk", "Project " + projectID + "awaiting signing");
         }
 
 
