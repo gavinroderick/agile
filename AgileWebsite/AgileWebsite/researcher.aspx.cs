@@ -20,12 +20,12 @@ namespace AgileWebsite
         public String[] lastName = new String[1];
         public String[] department = new String[1];
         public String[] risID = new String[1];
+       
         protected void Page_Load(object sender, EventArgs e)
         {
             DB dB = new DB();
                     
             String query = "SELECT project_ID, project_name, files.file_name, users.first_name, users.last_name, users.department, RIS_ID  FROM PROJECTS  JOIN users ON researcher_ID = users.staff_no  JOIN files ON projects.file_ID = files.file_ID WHERE (RIS_accepted = 0 OR RIS_accepted is NULL) AND projects.researcher_ID ='" + (string)Session["StaffNo"] + "'";
-           
 
             //CHECK FOR LOGIN
             string LI = (string)(Session["loggedin"]);
@@ -91,7 +91,6 @@ namespace AgileWebsite
                 System.Diagnostics.Debug.WriteLine(firstName[j]);
                 System.Diagnostics.Debug.WriteLine(lastName[j]);
                 System.Diagnostics.Debug.WriteLine(department[j]);
-
             }
         }
 
@@ -106,11 +105,59 @@ namespace AgileWebsite
 
             string updateSigned = "UPDATE 17agileteam6db.projects SET " + role + "_accepted = 1 WHERE project_ID = " + projectID;
             string updateIDSigned = "UPDATE 17agileteam6db.projects SET " + role + "_ID =" + userID + " WHERE project_ID = " + projectID;
-            db.Insert(updateSigned);
-            db.Insert(updateIDSigned);
+            db.Update(updateSigned);
+            db.Update(updateIDSigned);
         }
 
+        protected void Denied(object sender, EventArgs e)
+        {
+            string projectID = projID.Text;
+            string userID = (string)Session["StaffNo"];
+            string name = (string)Session["firstName"] + " " + (string)Session["lastName"];
+            string role = getRole();
+            string comments = "no comment";
+            string dateTime = getDateTime();
+            Button button = (Button)sender;
+            DB db = new DB();
 
+            string updateSigned = "UPDATE 17agileteam6db.projects SET RIS_denied = 1 WHERE project_ID = " + projectID;
+            string historyQuery = "INSERT INTO 17agileteam6db.history(project_ID, user, date_time, projectAction, Comments) " + "VALUES ('" + projectID + "','" + userID + "','" + dateTime + "','" + "Denied', '" + comments + "');";
+            //string updateIDSigned = "UPDATE 17agileteam6db.projects SET " + role + "_ID =" + userID + " WHERE project_ID = " + projectID;
+            db.Update(updateSigned);
+            db.Insert(historyQuery);
+            //db.Update(updateIDSigned);
+        }
+
+        private string getDateTime()
+        {
+            string month = DateTime.Now.Month.ToString();
+            int monthInt = Int32.Parse(month);
+            if (monthInt < 10)
+            {
+                month = "0" + monthInt;
+            }
+            string day = DateTime.Now.Day.ToString();
+            int dayInt = Int32.Parse(day);
+            if (dayInt < 10)
+            {
+                day = "0" + dayInt;
+            }
+            string hour = DateTime.Now.Hour.ToString();
+            int hourInt = Int32.Parse(hour);
+            if (hourInt < 10)
+            {
+                hour = "0" + hourInt;
+            }
+            string minute = DateTime.Now.Minute.ToString();
+            int minuteInt = Int32.Parse(minute);
+            if (minuteInt < 10)
+            {
+                minute = "0" + minuteInt;
+            }
+
+            string dateTimeCorrectFormat = DateTime.Now.Year + "-" + month + "-" + day + " " + hour + ":" + minute;
+            return dateTimeCorrectFormat;
+        }
         private string getRole()
         {
             string role = (string)Session["role"];

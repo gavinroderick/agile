@@ -21,6 +21,9 @@
             <div class="col">
                 <asp:Button ID="approveButton" runat="server" class="btn btn-success btn-block"  OnClick="Accepted" Value="Approve" Text="Approve"/>
             </div>
+            <div class="col">
+                <asp:Button ID="deniedButton" runat="server" class="btn btn-danger btn-block"  OnClick="Denied" Value="Deny" Text="Deny"/>
+            </div>
         </div>
         
         <div class="row justify-content-center">

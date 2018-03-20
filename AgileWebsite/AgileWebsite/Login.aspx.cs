@@ -28,6 +28,8 @@ namespace AgileWebsite
             while (reader.HasRows && reader.Read())
             {
                 Session["role"] = reader.GetString(reader.GetOrdinal("role"));
+                Session["firstName"] = reader.GetString(reader.GetOrdinal("first_name"));
+                Session["lastName"] = reader.GetString(reader.GetOrdinal("last_name"));
             }
 
             if (reader.HasRows)
