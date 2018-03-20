@@ -22,8 +22,22 @@ namespace AgileWebsite
         protected void Page_Load(object sender, EventArgs e)
         {
             DB dB = new DB();
-            String query = "SELECT project_ID, project_name, files.file_name, users.first_name, users.last_name, users.department, RIS_ID  FROM PROJECTS  JOIN users ON researcher_ID = users.staff_no  JOIN files ON projects.file_ID = files.file_ID WHERE RIS_accepted = 0 LIMIT 0, 1000";
-            
+            String query = "SELECT project_ID, project_name, files.file_name, users.first_name, users.last_name, users.department, RIS_ID FROM PROJECTS JOIN users ON researcher_ID = users.staff_no JOIN files ON projects.file_ID = files.file_ID; ";
+            //String query = "SELECT project_ID, files.file_name, users.first_name, users.last_name, users.department, RIS_ID FROM PROJECTS JOIN users ON researcher_ID = users.staff_no JOIN files ON projects.file_ID = files.file_ID;";
+            //String[] projectID = new String[1];
+            //String[] fileName = new String[1];
+            //String[] firstName = new String[1];
+            //String[] lastName = new String[1];
+            //String[] risID = new String[1];
+
+
+            /*
+             * project id
+             * file name
+             * 
+             * 
+             */
+            //String[] rows = new String[1];
             int i = 0;
 
             try
@@ -87,45 +101,25 @@ namespace AgileWebsite
 
         protected void Accepted(object sender, EventArgs e)
         {
-            string projectID = projID.Text;
-            string userID = (string)Session["StaffNo"];
-            string role = getRole();
-
             Button button = (Button)sender;
+            string role = "RIS";
+           // int project_ID = 2;
             DB db = new DB();
+            System.Diagnostics.Debug.WriteLine(button.CommandName);
+            string query = "UPDATE 17agileteam6db.projects SET " + role + "_accepted = 1 WHERE project_ID = " + 22;
 
-            string updateSigned = "UPDATE 17agileteam6db.projects SET " + role + "_accepted = 1 WHERE project_ID = " + projectID;
-            string updateIDSigned = "UPDATE 17agileteam6db.projects SET " + role + "_ID =" + userID + " WHERE project_ID = " + projectID;
-            db.Insert(updateSigned);
-            db.Insert(updateIDSigned);
+            db.Insert(query);
+
+
         }
 
-
-        private string getRole()
+        public void uploadButton_Click(object sender, System.EventArgs e)
         {
-            string role = (string)Session["role"];
-            switch (role)
-            {
-                case "1":
-                    return "RIS";
-                case "2":
-                    return "ass_dean";
-                case "3":
-                    return "dean";
-            }
-            return " ";
-        }
-
-        public void Upload(object sender, System.EventArgs e)
-        {
-            string projectID = projID.Text;
             Response.Redirect("~/UploadProject.aspx");
         }
 
-
-        public void Download(object sender, System.EventArgs e)
+        public void downloadButton_Click(object sender, System.EventArgs e)
         {
-            string projectID = projID.Text;
             Response.Redirect("~/DownloadProjectPage.aspx");
         }
     }

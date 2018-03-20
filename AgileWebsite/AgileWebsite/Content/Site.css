@@ -39,9 +39,3 @@ input[type="select"] {
         padding: 0;
     }
 }
-
-.id-row>h6{
-    display: inline;
-    padding-left: 2px;
-    padding-right: 2px;
-}
