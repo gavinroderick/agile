@@ -12,22 +12,24 @@ namespace AgileWebsite
 	{
         MySql.Data.MySqlClient.MySqlDataReader reader;
         string query;
+        //When Page is loaded
         protected void Page_Load(object sender, EventArgs e)
 		{
-            string LI = (string)(Session["loggedin"]);
-            if (LI == "Loggedin")
+            string LI = (string)(Session["loggedin"]); //gets Loggin
+            if (LI == "Loggedin") //Checks if user is logged on redirects to page.
             {
                 DB db = new DB();
                 string staffID = (string)(Session["StaffNo"]);
 
-                Redirect(getDetails(db, staffID));
+                Redirect(getDetails(db, staffID)); 
             }
         }
+        //When Login has been Pressed
         protected void SubmitEventMethod(object sender, EventArgs e)
         {
             string username = Username.Text;
             string pass = Password.Text;
-            query = "SELECT * FROM 17agileteam6db.users WHERE staff_no ='" + username + "' AND pass = '" + pass + "';";
+            query = "SELECT * FROM 17agileteam6db.users WHERE staff_no ='" + username + "' AND pass = '" + pass + "';"; //checks user name and password
             DB db = new DB();
 
             reader = db.Select(query);
@@ -48,12 +50,14 @@ namespace AgileWebsite
             }
             else
             {
+                //If username and password not found return false
                 Session["failed"] = "failed";
                 Response.Redirect("Login.aspx", false);
             }
             reader.Close();
         }
 
+        //Gets Users Details
         private string getDetails(DB db, string staffID)
         {
             string roleQuery = "SELECT first_name, last_name, department, role from 17agileteam6db.users WHERE staff_no = '" + staffID + "';";
@@ -62,21 +66,22 @@ namespace AgileWebsite
             return reader.GetString("role");
         }
 
+        //Redirects user to appropriate site
         private void Redirect(string role)
         {
             switch (role)
             {
                 case "0":
-                    Response.Redirect("Researcher.aspx");
+                    Response.Redirect("Researcher.aspx"); //sends to Researcher
                     break;
                 case "1":
-                    Response.Redirect("ris.aspx");
+                    Response.Redirect("ris.aspx"); //sends to RIS
                     break;
                 case "2":
-                    Response.Redirect("ass_dean.aspx");
+                    Response.Redirect("ass_dean.aspx");//sends to assistant Dean
                     break;
                 case "3":
-                    Response.Redirect("dean.aspx");
+                    Response.Redirect("dean.aspx");//sends to Dean.
                     break;
                 default:
                     Response.Redirect("Default.aspx");

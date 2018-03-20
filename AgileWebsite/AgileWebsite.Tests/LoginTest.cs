@@ -8,6 +8,7 @@ namespace AgileWebsite.Tests
     public class ULoginTest
     {
         [TestMethod]
+        //checks if user uses correct credentials.
         public void SuccessLogin()
         {
             string username = "99C009";
@@ -34,6 +35,7 @@ namespace AgileWebsite.Tests
             Assert.AreEqual(true, login);
         }
         [TestMethod]
+        //checks if user uses wrong credentials
         public void FailedLogin()
         {
             string username = "321321";

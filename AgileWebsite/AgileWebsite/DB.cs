@@ -128,21 +128,22 @@ namespace AgileWebsite
             Insert(query);
         }
 
+        //Creates email and sends to email given with given message
         public void Email(string toEmail, string message)
         {
             try
             {
-                MailMessage mail = new MailMessage("team6agile@gmail.com", toEmail);
-                SmtpClient client = new SmtpClient("smtp.gmail.com")
+                MailMessage mail = new MailMessage("team6agile@gmail.com", toEmail); //creates email
+                SmtpClient client = new SmtpClient("smtp.gmail.com")// Sends from Gmail
                 {
                     Port = 587,
-                    Credentials = new System.Net.NetworkCredential("team6agile@gmail.com", "AgileTeam6"),
+                    Credentials = new System.Net.NetworkCredential("team6agile@gmail.com", "AgileTeam6"), //gmail Account credentials
                     EnableSsl = true
 
                 };
                 mail.Subject = "Don't Reply: Project Alert.";
                 mail.Body = message;
-                client.Send(mail);
+                client.Send(mail); //sends Email
             }
             catch
             {

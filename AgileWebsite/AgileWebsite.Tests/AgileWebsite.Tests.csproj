@@ -83,7 +83,6 @@
     <Compile Include="SendEmailTest.cs" />
     <Compile Include="SigningTest.cs" />
     <Compile Include="HistoryTest.cs" />
-    <Compile Include="NewProjectTest.cs" />
     <Compile Include="InsertTest.cs" />
     <Compile Include="UpdateTest.cs" />
     <Compile Include="LoginTest.cs" />

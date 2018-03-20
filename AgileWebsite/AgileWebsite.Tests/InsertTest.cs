@@ -8,6 +8,7 @@ namespace AgileWebsite.Tests
     public class InsertTest
     {
         [TestMethod]
+        //checks if insert is working Correctly if given correct values
         public void TestInsertSuccess()
         {
             DBTest db = new DBTest();
@@ -16,6 +17,7 @@ namespace AgileWebsite.Tests
             Assert.AreEqual(true, insert);
         }
         [TestMethod]
+        //Checks if insert fails when given bad values
         public void TestInsertfail()
         {
             DBTest db = new DBTest();

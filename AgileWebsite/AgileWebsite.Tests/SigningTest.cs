@@ -12,6 +12,7 @@ namespace AgileWebsite.Tests
     public class SigningTest
     {
         [TestMethod]
+        //Checks if it Signs Correctly
         public void SignTest()
         {
             string role = "RIS";
@@ -24,6 +25,7 @@ namespace AgileWebsite.Tests
         }
 
         [TestMethod]
+        //Checks if the History Works with signing
         public void SignHistoryTest()
         {
             string role = "RIS";
