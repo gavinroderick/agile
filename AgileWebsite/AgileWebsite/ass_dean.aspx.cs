@@ -143,7 +143,7 @@ namespace AgileWebsite
             string updateIDSigned = "UPDATE 17agileteam6db.projects SET " + role + "_ID =" + userID + " WHERE project_ID = " + projectID;
             db.Insert(updateSigned);
             db.Insert(updateIDSigned);
-            db.History(projectID, role, "Signed", "Project Has been Signed");
+            db.History(Int32.Parse(projectID), role, "Signed", "Project Has been Signed");
             string getEmail = "USE 17agileteam6db; " +
                 "SELECT email FROM users INNER JOIN projects ON projects.researcher_ID = staff_no WHERE projects.project_ID = 21 ";
             reader = db.Select(getEmail);
