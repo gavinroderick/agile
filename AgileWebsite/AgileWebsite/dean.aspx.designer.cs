@@ -10,7 +10,7 @@
 namespace AgileWebsite {
     
     
-    public partial class ris_home {
+    public partial class Dean {
         
         /// <summary>
         /// projID control.
