@@ -17,8 +17,11 @@
     
       <h3>Download a Project</h3>
       <br />
-      <asp:Label ID="Label1" runat="server" Text="Please enter the associated file to the Project you would like to download."  />    <br />
-      <asp:Label ID="Label2" runat="server" Text="This can be found on at the menu page if unknown. "  /> <br /><br />
+      <asp:Label ID="Label1" runat="server" Text="Please enter the associated file to the Project you would like to download."  />
+      <%if (fileName != null)
+          { %><p>Filename: <%=fileName %></p><%} %>
+       <br />
+      <asp:Label ID="Label2" runat="server" Text="This can be found on at the menu page if unknown. "  /><br /><br />
       <asp:TextBox id="fileName" runat="server" type="text" Width="300"  />
       <asp:Label ID="xlsxlabel" runat="server" Text=".xlsx"  />    <br />
       <br />        

@@ -22,6 +22,12 @@ namespace AgileWebsite
             {
                 Response.Redirect("Index.aspx", false);
             }
+            //Check for parameter
+            string filename = Request["filename"];
+            if(filename != null)
+            {
+                fileName.Text = filename;
+            }
         }
 
         /*

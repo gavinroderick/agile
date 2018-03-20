@@ -3,26 +3,26 @@
     <div class="container">
         <h2 class="display-3" style="text-align: center;">Researcher Homepage</h2>
         <hr />
-        <div class="row id-row input-group justify-content-center">
+        <%--<div class="row id-row input-group justify-content-center">
             
             <label for="projID" class="text-muted">Please enter the project ID you wish to use:&nbsp; </label> <br />
             <asp:TextBox Class ="form-control" ID="projID" runat="server"></asp:TextBox> <br />
             
-        </div>
+        </div>--%>
         <br />
         <div class="row id-row input-group justify-content-center">
             <div class="col">
-                <asp:Button ID="createButton" runat="server"  class="btn btn-info btn-block" OnClick="Create" Value="Create" Text="Create Project" />&nbsp;<br />
+                <asp:Button ID="createButton" runat="server"  class="btn btn-success btn-block" OnClick="Create" Value="Create" Text="Create Project" />&nbsp;<br />
             </div>
-            <div class="col">
+            <%--<div class="col">
                 <asp:Button ID="uploadButton" runat="server"  class="btn btn-warning btn-block" OnClick="Upload" Value="Upload" Text="Upload an Edit" />&nbsp;<br />
             </div>
             <div class="col">
                 <asp:Button ID="downloadButton" runat="server" class="btn btn-primary btn-block" OnClick="Download" Value="Download" Text="Download"/>&nbsp;<br />
-            </div>
-            <div class="col">
+            </div>--%>
+            <%--<div class="col">
                 <asp:Button ID="approveButton" runat="server" class="btn btn-success btn-block"  OnClick="Accepted" Value="Approve" Text="Approve"/>
-            </div>
+            </div>--%>
         </div>
         
         <div class="row justify-content-center">
@@ -49,7 +49,7 @@
                             <img class="card-img-top" src="/Content/img/pending.png" alt="pending assistant dean approval" >
                             <div class="centered" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-weight:bold; font-size:x-large;">Pending  Assistant Dean Approval</div>
                        <%}
-                       else if (RIS_accepted[m] == "0")
+                       else if (RIS_accepted[m] == "0" && RIS_denied[m]== "False")
                        { %>
                             <img class="card-img-top" src="/Content/img/pending.png" alt="pending assistant RIS approval" >
                             <div class="centered" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-weight:bold; font-size:x-large;">Pending RIS Approval</div>

@@ -152,7 +152,7 @@ namespace AgileWebsite
 
         protected void Accepted(object sender, EventArgs e)
         {
-            string projectID = projID.Text;
+            //string projectID = projID.Text;
             string userID = (string)Session["StaffNo"];
             string role = getRole();
 
@@ -167,7 +167,7 @@ namespace AgileWebsite
 
         protected void Denied(object sender, EventArgs e)
         {
-            string projectID = projID.Text;
+            //string projectID = projID.Text;
             string userID = (string)Session["StaffNo"];
             string name = (string)Session["firstName"] + " " + (string)Session["lastName"];
             string role = getRole();
@@ -237,14 +237,14 @@ namespace AgileWebsite
 
         public void Upload(object sender, System.EventArgs e)
         {
-            string projectID = projID.Text;
+            //string projectID = projID.Text;
             Response.Redirect("~/UploadProject.aspx");
         }
 
 
         public void Download(object sender, System.EventArgs e)
         {
-            string projectID = projID.Text;
+            //string projectID = projID.Text;
             Response.Redirect("~/DownloadProjectPage.aspx");
         }
 

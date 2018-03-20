@@ -1,35 +1,35 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Project.aspx.cs" Inherits="AgileWebsite.Project" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-
+    
+     <%  if(currentStage == "finished"){ %>
+    <div style="width:100%;background-color:greenyellow;font-weight:bold;"><h1 class="text-center">YEAHHH BOII U GOT FUNDED</h1></div><% } %>
     <div class="container">
         <h2 class="display-3" style="text-align: center;"><%=projectName %></h2>
         <h4 class="text-center"><%=researcherName %> - <%=department %></h4>
-       
+
         <div class="row id-row input-group justify-content-center">
             <div class="col">
-               <a id="createButton" role="button" class="btn btn-success btn-block" >New project</a>
+                <a id="editProject" role="button" class="btn btn-warning btn-block" href="UploadProject.aspx">Edit</a>
             </div>
             <div class="col">
-                <a id="editProject" role="button" class="btn btn-warning btn-block">Edit</a>
+                <a id="downloadingButton" role="button" class="btn btn-primary btn-block" href="DownloadProjectPage.aspx" >Download</a>
             </div>
-            <div class="col">
-                <a id="downloadingButton" role="button" class="btn btn-dark btn-block" >Download</a>
-            </div>
-            <% if(userRole == "1")
+            <% if(userRole == 1 || userRole == 2 || userRole == 3)
                 { %>
             <div class="col">
-                <a id="decline" role="button" class="btn btn-danger btn-block" >Decline</a>
+                <asp:Button ID="declineButton" runat="server" OnClick="Denied" Text="Decline" CssClass="btn btn-block btn-danger"/>
             </div>
             <div class="col">
-                <a id="approve" role="button" class="btn btn-success btn-block" >Approve</a>
+                <asp:Button ID="approveButton" runat="server" OnClick="Accepted" Text="Approve" CssClass="btn btn-success btn-block"/>
             </div>
             <%} %>
         </div>
-        <% if (stage == "3" && userRole == "0")
+        <br />
+        <% if (currentStage == "dean" && userRole == 0)
             { %>
-        <div class="row id-row input-group justify-content-center">
+             <div class="row id-row input-group justify-content-center">
             <div class="col">
-                <a id="finalApprove" role="button" class="btn btn-success btn-block" >Final sign and approve your funding!</a>
+                <asp:Button id="finalApprove" runat="server" CssClass="btn btn-success btn-block" Text="Final sign and approve your funding!" OnClick="finalFunded"/>
             </div>
         </div>
         <%} %>
@@ -48,36 +48,7 @@
         </dl>
         <hr />
         <h3>Project History</h3>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
-                </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-            </tr>
-            </tbody>
-        </table>
+        <h6>There is no history for this project</h6>
 
      </div>
 

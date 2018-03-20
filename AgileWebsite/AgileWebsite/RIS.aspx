@@ -42,7 +42,7 @@
                 <div class="card-body" >
                    
                         <div class="col">
-                            <h4 class="card-title"><%=projectName[m] %></h4>
+                            <h4 class="card-title"><a href="project.aspx?id=<%=projectID[m] %>"><%=projectName[m] %></a></h4>
                             
                             <h6 class="card-subtitle mb-2 text-muted">Researcher: <%=firstName[m]%>  <%=lastName[m]%> - <%=department[m] %></h6>
                             <h6 class="card-subtitle mb-2 text-muted">Associated File: <%=fileName[m]%></h6>
@@ -62,6 +62,7 @@
       
             
             
+        <h6 class="text-center">You're finished! Nothing more to see here!</h6>
             
 
 

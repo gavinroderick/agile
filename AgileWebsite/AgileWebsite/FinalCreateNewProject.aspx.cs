@@ -163,7 +163,7 @@ namespace AgileWebsite
                     query = "INSERT INTO files (file_name, date_uploaded, actual_file, file_size) VALUES (@fn,@dateTimeCorrectFormat,@input,@inputLength)";
 
                     //query string for insertion to projects table
-                    string query2 = "INSERT INTO projects (file_ID, researcher_ID, project_info, date_submitted, project_name, RIS_ID, ass_dean_ID, dean_ID) VALUES ((SELECT MAX(file_id) FROM 17agileteam6db.files), @username, @projInfo, @dateSub, @projName, '0', '0', '0')";
+                    string query2 = "INSERT INTO projects (file_ID, researcher_ID,RIS_accepted,ass_dean_accepted,dean_accepted, project_info, date_submitted, project_name, RIS_ID, ass_dean_ID, dean_ID,RIS_denied, researcher_final_accept) VALUES ((SELECT MAX(file_id) FROM 17agileteam6db.files), @username,'0','0','0', @projInfo, @dateSub, @projName, '0', '0', '0','0','0')";
 
                     //creates the command using the query string, adds parameters and then executes the database insertion for the files table
                     MySqlCommand c = new MySqlCommand(query, db.GetConnectionStringForScott());

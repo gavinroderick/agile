@@ -3,14 +3,14 @@
     <div class="container">
         <h2 class="display-3" style="text-align: center;">Assistant Dean Homepage</h2>
         <hr />
-        <div class="row id-row input-group justify-content-center">
+        <div class="row id-row input-group justify-content-center" style="display:none;">
             
             <label for="projID" class="text-muted">Please enter the project ID you wish to use:&nbsp; </label> <br />
             <asp:TextBox Class ="form-control" ID="projID" runat="server"></asp:TextBox> <br />
             
         </div>
         <br />
-        <div class="row id-row input-group justify-content-center">
+        <div class="row id-row input-group justify-content-center" style="display: none;">
             <div class="col">
                 <asp:Button ID="uploadButton" runat="server"  class="btn btn-warning btn-block" OnClick="Upload" Value="Upload" Text="Upload" />&nbsp;<br />
             </div>
@@ -35,7 +35,7 @@
                 <div class="card-body" >
                    
                         <div class="col">
-                            <h4 class="card-title"><%=projectName[m] %></h4>
+                            <h4 class="card-title"><a href="Project.aspx?id=<%=projectID[m] %>"><%=projectName[m] %></a></h4>
                             
                             <h6 class="card-subtitle mb-2 text-muted">Researcher: <%=firstName[m]%>  <%=lastName[m]%> - <%=department[m] %></h6>
                             <h6 class="card-subtitle mb-2 text-muted">Associated File: <%=fileName[m]%></h6>
@@ -48,7 +48,7 @@
             
          <%} %>
         </div>
-      
+        <h6 class="text-center">You're finished! Nothing more to see here!</h6>
         </div>
 
 
