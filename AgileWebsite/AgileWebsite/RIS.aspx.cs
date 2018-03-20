@@ -32,6 +32,13 @@ namespace AgileWebsite
             {          
                 Response.Redirect("Index.aspx", false);
             }
+            else  //CHECK & ENSURE USER IS RESEARCHER
+            {
+                DB db = new DB();
+                string staffID = (string)(Session["StaffNo"]);
+
+                Redirect(getDetails(db, staffID));
+            }
 
             int i = 0;
 
@@ -94,6 +101,36 @@ namespace AgileWebsite
                 System.Diagnostics.Debug.WriteLine(department[j]);
                 System.Diagnostics.Debug.WriteLine(risDenied[j]);
 
+            }
+        }
+
+        private string getDetails(DB db, string staffID)
+        {
+            string roleQuery = "SELECT first_name, last_name, department, role from 17agileteam6db.users WHERE staff_no = '" + staffID + "';";
+            reader = db.Select(roleQuery);
+            reader.Read();
+            return reader.GetString("role");
+        }
+
+        private void Redirect(string role)
+        {
+            switch (role)
+            {
+                case "0":
+                    Response.Redirect("Researcher.aspx");
+                    break;
+                case "1":
+                    //Response.Redirect("ris.aspx");
+                    break;
+                case "2":
+                    Response.Redirect("ass_dean.aspx");
+                    break;
+                case "3":
+                    Response.Redirect("dean.aspx");
+                    break;
+                default:
+                    Response.Redirect("Default.aspx");
+                    break;
             }
         }
 
