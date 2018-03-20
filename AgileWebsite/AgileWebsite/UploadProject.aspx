@@ -20,7 +20,8 @@
       <h3>Upload an Edited File</h3>
       <br />        
 
-      <asp:Label ID="uploadLabel" runat="server" Text="Please upload an excel file which exists in a project:"  />    <br />     
+      <asp:Label ID="uploadLabel" runat="server" Text="Please upload an excel file which exists in a project:"  />    <br />  
+           <asp:Label ID="Label2" runat="server" Text="This can be found on at the menu page if unknown. "  /> <br /><br />   
       <asp:FileUpload ID="uploadFile" runat="server" />
       <br />
       <br />

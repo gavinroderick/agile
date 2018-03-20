@@ -14,6 +14,17 @@ namespace AgileWebsite
 {
     public partial class historyTable : System.Web.UI.Page
     {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+             //CHECK FOR LOGIN
+            string LI = (string)(Session["loggedin"]);
+            if (LI != "Loggedin")
+            {
+                Response.Redirect("Index.aspx", false);
+            }
+
+        }
+
         public string getWhileLoopData()
         {
             DB db = new DB();

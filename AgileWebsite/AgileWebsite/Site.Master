@@ -52,6 +52,18 @@
                         <a class="nav-link" href="/profile">My Profile</a>
                     </li>--%>
                     <li class="nav-item">
+                        <a class="nav-link" href="/DownloadProjectPage">Download</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/UploadProject">Upload</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="/ViewFinishedProjects">Completed Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/historyTable">View Projects History</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="/about">About</a>
                     </li>
                 </ul>
