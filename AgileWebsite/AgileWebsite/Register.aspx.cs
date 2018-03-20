@@ -30,6 +30,7 @@ namespace AgileWebsite
                            "VALUES('" + sn + "'," + "'" + fn + "'," + "'" + ln + "'," + "'" + email + "'," + "'" + dept + "'," + r + "," + "'" + pass + "');";
 
             db.Insert(query);
+            Response.Redirect("Login.aspx");
         }
 
     }

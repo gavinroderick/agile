@@ -211,6 +211,13 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\img\DJCAD.png" />
+    <Content Include="Content\img\Education-Social-Work.png" />
+    <Content Include="Content\img\Humanities.png" />
+    <Content Include="Content\img\Life-Sciences.png" />
+    <Content Include="Content\img\Medicine-Dentistry-Nursing.png" />
+    <Content Include="Content\img\Social-Sciences.png" />
+    <Content Include="Content\img\SSE.png" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\cover.css" />
     <Content Include="docs\MySqlCommand.xml" />
@@ -224,6 +231,7 @@
     <Content Include="docs\MySqlParameter.xml" />
     <Content Include="docs\MySqlParameterCollection.xml" />
     <Content Include="docs\MySqlTransaction.xml" />
+    <Content Include="researcher.aspx" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper.js" />
@@ -441,6 +449,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="researcher.aspx.cs">
+      <DependentUpon>researcher.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="researcher.aspx.designer.cs">
+      <DependentUpon>researcher.aspx</DependentUpon>
     </Compile>
     <Compile Include="UploadProject.aspx.cs">
       <DependentUpon>UploadProject.aspx</DependentUpon>

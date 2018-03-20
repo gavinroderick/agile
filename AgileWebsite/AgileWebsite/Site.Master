@@ -6,7 +6,7 @@
 <head runat="server">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> - My ASP.NET Application</title>
+    <title><%: Page.Title %> | Online Research Funding Application</title>
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
@@ -64,14 +64,11 @@
             <hr />
             <footer class="mastfoot mt-auto">
                 <div class="inner">
-                  <p>Cover template for <a href="https://getbootstrap.com/">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+                  <p>&copy; University of Dundee - Agile Team 6 - AC31007<br /> <a href="https://github.com/gavinroderick/agile">Check out our source code!</a>
+                  </p>
                 </div>
             </footer>
-            <%--<footer class="footer">
-                <p>&copy; <%: DateTime.Now.Year %> - Agile Team 6</p>
-                <img src="https://www.computing.dundee.ac.uk/assets/site_logo-b662fb1b1d6d2f9dbf0d9795aa0edcff.png" />
-                <img src="https://my.dundee.ac.uk/branding/_1_1/Logo-cropped.png" />
-            </footer>--%>
+           
         </div>
     </form>
 </body>

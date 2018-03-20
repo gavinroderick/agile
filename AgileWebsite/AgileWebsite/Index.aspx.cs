@@ -44,16 +44,19 @@ namespace AgileWebsite
             switch (role)
             {
                 case "0":
-                    Response.Redirect("researcherOptions.aspx");
+                    Response.Redirect("researcher.aspx");
                     break;
                 case "1":
-                    Response.Redirect("risOptions.aspx");
+                    Response.Redirect("ris.aspx");
                     break;
                 case "2":
-                    Response.Redirect("assistantdean.aspx");
+                    Response.Redirect("ass_dean.aspx");
                     break;
                 case "3":
                     Response.Redirect("dean.aspx");
+                    break;
+                default:
+                    Response.Redirect("Default.aspx");
                     break;
             }
                 

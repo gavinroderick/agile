@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
 
-    <title>Cover Template for Bootstrap</title>
+    <title>Register | Online Research Funding Application</title>
 
     <!-- Bootstrap core CSS -->
     <link href="Content/bootstrap.min.css" rel="stylesheet">
@@ -67,7 +67,7 @@
                         </div>
                        
                         <%--<asp:Button ID="Submit" runat="server" CssClass="btn btn-lg btn-success btn-block" type="Submit" Text="Register" Value="Submit" OnClick="Submit"/>--%>
-                        <asp:Button ID="approveButton" runat="server" class="btn btn-success"  OnClick="Accepted" Value="Approve" Text="Approve"/>
+                        <asp:Button ID="approveButton" runat="server" class="btn btn-success btn-block"  OnClick="Accepted" Value="Approve" Text="Register"/>
                     </form>
                     <p class="text-center"><a href="Login.aspx">Or log in here</a></p>
         </main>
