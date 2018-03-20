@@ -30,7 +30,7 @@ namespace AgileWebsite
             string fn = firstName.Text;
             string ln = surname.Text;
             string email = emailAddress.Text;
-            string dept = department.Text;
+            string dept = dprtmnt.SelectedItem.Value;
             string pass = password.Text;
             string r = role.SelectedItem.Value;
             int.Parse(r);

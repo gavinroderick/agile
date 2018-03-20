@@ -49,13 +49,13 @@ namespace AgileWebsite {
         protected global::System.Web.UI.WebControls.TextBox staffNo;
         
         /// <summary>
-        /// department control.
+        /// dprtmnt control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox department;
+        protected global::System.Web.UI.WebControls.DropDownList dprtmnt;
         
         /// <summary>
         /// role control.

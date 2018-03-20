@@ -23,21 +23,14 @@ namespace AgileWebsite
         protected void Page_Load(object sender, EventArgs e)
         {
             DB dB = new DB();
-            String query = "SELECT project_ID, project_name, files.file_name, users.first_name, users.last_name, users.department, RIS_ID  FROM PROJECTS  JOIN users ON researcher_ID = users.staff_no  JOIN files ON projects.file_ID = files.file_ID WHERE RIS_accepted = 0 OR RIS_accepted is NULL";
-            //String query = "SELECT project_ID, project_name, files.file_name, users.first_name, users.last_name, users.department, RIS_denied, RIS_ID  FROM PROJECTS  JOIN users ON researcher_ID = users.staff_no  JOIN files ON projects.file_ID = files.file_ID WHERE (RIS_accepted = 0 OR RIS_accepted is NULL)";
+            //String query = "SELECT project_ID, project_name, files.file_name, users.first_name, users.last_name, users.department, RIS_ID  FROM PROJECTS  JOIN users ON researcher_ID = users.staff_no  JOIN files ON projects.file_ID = files.file_ID WHERE RIS_accepted = 0 LIMIT 0, 1000";
+            String query = "SELECT project_ID, project_name, files.file_name, users.first_name, users.last_name, users.department, RIS_denied, RIS_ID  FROM PROJECTS  JOIN users ON researcher_ID = users.staff_no  JOIN files ON projects.file_ID = files.file_ID WHERE (RIS_accepted = 0 OR RIS_accepted is NULL) AND projects.researcher_ID ='" + (string)Session["StaffNo"] + "'";
 
             //CHECK FOR LOGIN
             string LI = (string)(Session["loggedin"]);
             if (LI != "Loggedin")
             {          
                 Response.Redirect("Index.aspx", false);
-            }
-            else  //CHECK & ENSURE USER IS RESEARCHER
-            {
-                DB db = new DB();
-                string staffID = (string)(Session["StaffNo"]);
-
-                Redirect(getDetails(db, staffID));
             }
 
             int i = 0;
@@ -101,36 +94,6 @@ namespace AgileWebsite
                 System.Diagnostics.Debug.WriteLine(department[j]);
                 System.Diagnostics.Debug.WriteLine(risDenied[j]);
 
-            }
-        }
-
-        private string getDetails(DB db, string staffID)
-        {
-            string roleQuery = "SELECT first_name, last_name, department, role from 17agileteam6db.users WHERE staff_no = '" + staffID + "';";
-            reader = db.Select(roleQuery);
-            reader.Read();
-            return reader.GetString("role");
-        }
-
-        private void Redirect(string role)
-        {
-            switch (role)
-            {
-                case "0":
-                    Response.Redirect("Researcher.aspx");
-                    break;
-                case "1":
-                    //Response.Redirect("ris.aspx");
-                    break;
-                case "2":
-                    Response.Redirect("ass_dean.aspx");
-                    break;
-                case "3":
-                    Response.Redirect("dean.aspx");
-                    break;
-                default:
-                    Response.Redirect("Default.aspx");
-                    break;
             }
         }
 
