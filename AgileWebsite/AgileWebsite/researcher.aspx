@@ -12,7 +12,10 @@
         <br />
         <div class="row id-row input-group justify-content-center">
             <div class="col">
-                <asp:Button ID="uploadButton" runat="server"  class="btn btn-warning btn-block" OnClick="Upload" Value="Upload" Text="Upload" />&nbsp;<br />
+                <asp:Button ID="createButton" runat="server"  class="btn btn-info btn-block" OnClick="Create" Value="Create" Text="Create Project" />&nbsp;<br />
+            </div>
+            <div class="col">
+                <asp:Button ID="uploadButton" runat="server"  class="btn btn-warning btn-block" OnClick="Upload" Value="Upload" Text="Upload an Edit" />&nbsp;<br />
             </div>
             <div class="col">
                 <asp:Button ID="downloadButton" runat="server" class="btn btn-primary btn-block" OnClick="Download" Value="Download" Text="Download"/>&nbsp;<br />

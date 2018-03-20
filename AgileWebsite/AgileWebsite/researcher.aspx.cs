@@ -24,7 +24,7 @@ namespace AgileWebsite
         {
             DB dB = new DB();
                     
-            String query = "SELECT project_ID, project_name, files.file_name, users.first_name, users.last_name, users.department, RIS_ID  FROM PROJECTS  JOIN users ON researcher_ID = users.staff_no  JOIN files ON projects.file_ID = files.file_ID WHERE RIS_accepted = 0 AND projects.researcher_ID ='" + (string)Session["StaffNo"] + "'";
+            String query = "SELECT project_ID, project_name, files.file_name, users.first_name, users.last_name, users.department, RIS_ID  FROM PROJECTS  JOIN users ON researcher_ID = users.staff_no  JOIN files ON projects.file_ID = files.file_ID WHERE (RIS_accepted = 0 OR RIS_accepted is NULL) AND projects.researcher_ID ='" + (string)Session["StaffNo"] + "'";
            
 
             //CHECK FOR LOGIN
@@ -124,6 +124,12 @@ namespace AgileWebsite
                     return "dean";
             }
             return " ";
+        }
+
+        public void Create(object sender, System.EventArgs e)
+        {
+            
+            Response.Redirect("~/FinalCreateNewProject.aspx");
         }
 
         public void Upload(object sender, System.EventArgs e)
