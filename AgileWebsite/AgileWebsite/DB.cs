@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
+using System.Net.Mail;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -125,6 +126,28 @@ namespace AgileWebsite
             string query = "INSERT INTO 17agileteam6db.history (project_ID, user, Historycol, date_time, projectAction, Comments) VALUES (" + project_ID + ", '" + user + "', ' ', NOW(), '" + action + "', '" + comment + "')";
 
             Insert(query);
+        }
+
+        public void Email(string toEmail, string message)
+        {
+            try
+            {
+                MailMessage mail = new MailMessage("team6agile@gmail.com", toEmail);
+                SmtpClient client = new SmtpClient("smtp.gmail.com")
+                {
+                    Port = 587,
+                    Credentials = new System.Net.NetworkCredential("team6agile@gmail.com", "AgileTeam6"),
+                    EnableSsl = true
+
+                };
+                mail.Subject = "Don't Reply: Project Alert.";
+                mail.Body = message;
+                client.Send(mail);
+            }
+            catch
+            {
+                Console.Write("Something went wrong");
+            }
         }
     }
 }
