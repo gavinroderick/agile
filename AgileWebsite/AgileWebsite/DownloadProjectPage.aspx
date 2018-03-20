@@ -27,7 +27,7 @@
           <br /><br />
       <asp:Button ID="returnButton" runat="server" OnClick="returnButton_Click" Text="Return to Menu" />&nbsp;<br />
       <br />
-          <asp:Button ID="btn_return" runat="server" OnClick="return_finished_projects" Text="Return to finished projects" />&nbsp;<br />
+          
       <br />
      
 </form>

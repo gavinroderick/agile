@@ -22,7 +22,7 @@
                 <asp:Button ID="approveButton" runat="server" class="btn btn-success btn-block"  OnClick="Accepted" Value="Approve" Text="Approve"/>
             </div>
             <div class="col">
-                <asp:Button ID="deniedButton" runat="server" class="btn btn-danger btn-block"   Value="Deny" Text="Deny"/>
+               
             </div>
         </div>
         
@@ -32,11 +32,11 @@
              
             <div class="card" style="margin-left: 5px; margin-right: 5px;">
 
-               <div class="container">
-                    
-                    <img class="card-img-top" src="/Content/img/<%=department[m]%>.png" style="width:100%" >
-                    <div class="centered">Centered</div>
-               </div>
+               
+                
+                    <img class="card-img-top" src="/Content/img/<%=department[m]%>.png" >
+
+               
                 <div class="card-body" >
                    
                         <div class="col">
@@ -53,7 +53,7 @@
             
                 
                 </div>
-            </div>
+            
             
          <%} %>
         </div>
