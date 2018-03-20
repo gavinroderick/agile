@@ -24,6 +24,14 @@ namespace AgileWebsite
             DB dB = new DB();
             String query = "SELECT project_ID, project_name, files.file_name, users.first_name, users.last_name, users.department, RIS_ID  FROM PROJECTS  JOIN users ON researcher_ID = users.staff_no  JOIN files ON projects.file_ID = files.file_ID WHERE (dean_accepted = 0 OR dean_accepted is NULL) AND ass_dean_accepted = 1";
 
+
+            //CHECK FOR LOGIN
+            string LI = (string)(Session["loggedin"]);
+            if (LI != "Loggedin")
+            {
+                Response.Redirect("Index.aspx", false);
+            }
+
             int i = 0;
 
             try
