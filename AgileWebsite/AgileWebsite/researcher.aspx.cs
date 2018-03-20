@@ -23,7 +23,9 @@ namespace AgileWebsite
         protected void Page_Load(object sender, EventArgs e)
         {
             DB dB = new DB();
-            String query = "SELECT project_ID, project_name, files.file_name, users.first_name, users.last_name, users.department, RIS_ID  FROM PROJECTS  JOIN users ON researcher_ID = users.staff_no  JOIN files ON projects.file_ID = files.file_ID WHERE RIS_accepted = 0 LIMIT 0, 1000";
+                    
+            String query = "SELECT project_ID, project_name, files.file_name, users.first_name, users.last_name, users.department, RIS_ID  FROM PROJECTS  JOIN users ON researcher_ID = users.staff_no  JOIN files ON projects.file_ID = files.file_ID WHERE RIS_accepted = 0 AND projects.researcher_ID ='" + (string)Session["StaffNo"] + "'";
+           
 
             //CHECK FOR LOGIN
             string LI = (string)(Session["loggedin"]);
