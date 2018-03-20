@@ -51,19 +51,19 @@
                     <%--<li class="nav-item">
                         <a class="nav-link" href="/profile">My Profile</a>
                     </li>--%>
-                    <li class="nav-item">
+                    <li class="nav-item" style="margin-left:20px; margin-right:20px; padding-left: 10px; padding-right: 10px" >
                         <a class="nav-link" href="/DownloadProjectPage">Download</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/UploadProject">Upload</a>
                     </li>
-                     <li class="nav-item">
+                     <li class="nav-item" style="margin-left:25px; margin-right:20px">
                         <a class="nav-link" href="/ViewFinishedProjects">Completed Projects</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" style="margin-left:15px; margin-right:15px">
                         <a class="nav-link" href="/historyTable">View Projects History</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" style="margin-left:20px; margin-right:20px">
                         <a class="nav-link" href="/about">About</a>
                     </li>
                 </ul>
