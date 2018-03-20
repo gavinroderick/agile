@@ -3,6 +3,7 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
+    <!--CSS for this table-->
     <style>
 table, td, th {    
     border: 1px solid #ddd;
@@ -18,7 +19,7 @@ th, td {
     padding: 15px;
 }
 </style>
-
+    <!-- Table itslef with its different columns -->
     <table >
         <tr >
             <td> ID </td>                        

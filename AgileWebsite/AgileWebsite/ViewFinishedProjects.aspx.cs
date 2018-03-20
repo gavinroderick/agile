@@ -10,6 +10,7 @@ namespace AgileWebsite
 {
     public partial class ViewFinishedProjects : System.Web.UI.Page
     {
+        //Initialize parameters the class will need
         MySqlDataReader reader;
         public String[] firstName = new String[1];
         public String[] lastName = new String[1];
@@ -24,6 +25,7 @@ namespace AgileWebsite
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            //Connect to database and pick the data we want to use from int
             DB database = new DB();
             String query = "SELECT users.first_name, users.last_name, users.department, projects.project_name, projects.RIS_accepted, projects.ass_dean_accepted, projects.dean_accepted, files.file_name FROM users, projects, files WHERE projects.RIS_accepted = 1 AND projects.ass_dean_accepted = 1 AND projects.dean_accepted = 1 AND users.staff_no = projects.researcher_ID AND files.file_ID = projects.file_ID; ";
 
@@ -38,6 +40,7 @@ namespace AgileWebsite
 
             reader = database.Select(query);
             
+            //Reads the data
             try
             {
                 if (reader.HasRows)
@@ -61,6 +64,8 @@ namespace AgileWebsite
             {
                 // nothing
             }
+
+            //Save all the data that was read into a variable that will be used to print their values on the browser
             for (int p = 0; p < i; p++)
             {
                 System.Diagnostics.Debug.WriteLine("++++++++++++++++++++++++++++++++++");
@@ -97,7 +102,7 @@ namespace AgileWebsite
             }
 
         }
-
+        // Redirects to the download page
         public void download_method(object sender, System.EventArgs e)
         {
             Response.Redirect("~/DownloadProjectPage.aspx");

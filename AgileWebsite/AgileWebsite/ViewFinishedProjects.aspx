@@ -2,6 +2,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
     <div>
+
+<!-- For every finished project in the databse this page will run this loop once and display all its data on the screen  -->
         <%for (int k = 0; k < data.Count()-1; k++) {  %>
               <%System.Diagnostics.Debug.WriteLine(data.Count()); %>
 
@@ -17,7 +19,8 @@
                         </div>
                         <br />
                         <div class="col-4">
-                            
+
+<!-- The user can download the project he wants clicking on the corresponding download button -->                         
                             <asp:Button ID="btn_download" runat="server" type="button" OnClick="download_method" class="btn btn-secondary" Text="Download" />&nbsp; </asp:Button>
 
                         </div>                       
