@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Home Page" Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="AgileWebsite._Default" %>
+﻿<%@ Page Title="Home Page" Language="C#" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="AgileWebsite.Register" %>
 
 <html lang="en">
   <head>
@@ -26,47 +26,48 @@
         <br /><br />
         <main class="main carousel-inner cover">
                     <h1 class="display-4">Register your account</h1>
-                    <form class="form-signin">
+                    <form class="form-signin" runat="server">
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="inputFirstName">First Name</label>
-                                <input type="text" class="form-control" id="inputFirstName" placeholder="First name">
+                                <label for="firstName">First Name</label>
+                                <asp:TextBox ID="firstName" runat="server" AutoCompleteType="FirstName" CssClass="form-control" placeholder="First Name" required=true />
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="inputSurname">Surname</label>
-                                <input type="text" class="form-control" id="inputSurname" placeholder="Surname">
+                                <label for="surname">Surname</label>
+                                <asp:TextBox ID="surname" runat="server" AutoCompleteType="LastName" CssClass="form-control" placeholder="Surname" required=true />
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputEmail">Email address</label>
-                            <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus />
+                            <label for="emailAddress">Email address</label>
+                            <asp:TextBox ID="emailAddress" runat="server" AutoCompleteType="Email" CssClass="form-control" Placeholder="Email" required=true />
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-4">
-                                <label for="inputFirstName">Staff No.</label>
-                                <input type="text" class="form-control" id="inputStaffNo" placeholder="Staff Number">
+                                <label for="staffNo">Staff No.</label>
+                                <asp:TextBox ID="staffNo" runat="server" CssClass="form-control" Placeholder="Staff No" required=true />
                             </div>
                             <div class="form-group col-md-4">
-                                <label for="inputDepartment">Department</label>
-                                <input type="text" class="form-control" id="inputDepartment" placeholder="Department">
+                                <label for="department">Department</label>
+                                <asp:TextBox ID="department" runat="server" CssClass="form-control" Placeholder="Department" required=true />
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="inputRole">Role</label>
-                                <select id="inputRole" class="form-control">
-                                    <option selected>Choose...</option>
-                                    <option>Research Applicant</option>
-                                    <option>RIS Staff</option>
-                                    <option>Associate Dean</option>
-                                    <option>Dean</option>
-                                </select>
+                                <asp:DropDownList ID="role" runat="server" CssClass="form-control" >
+                                    <asp:ListItem>Choose...</asp:ListItem>
+                                    <asp:ListItem Value="0">Research Applicant</asp:ListItem>
+                                    <asp:ListItem Value="1">RIS Staff</asp:ListItem>
+                                    <asp:ListItem Value="2">Associate Dean</asp:ListItem>
+                                    <asp:ListItem Value="3">Dean</asp:ListItem>
+                                </asp:DropDownList>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="inputPassword" >Password</label>
-                            <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                            <asp:TextBox ID="password" runat="server" type="password" CssClass="form-control" placeholder="Password" required="true"/>
                         </div>
                        
-                        <button class="btn btn-lg btn-success btn-block" type="submit">Register</button>
+                        <%--<asp:Button ID="Submit" runat="server" CssClass="btn btn-lg btn-success btn-block" type="Submit" Text="Register" Value="Submit" OnClick="Submit"/>--%>
+                        <asp:Button ID="approveButton" runat="server" class="btn btn-success"  OnClick="Accepted" Value="Approve" Text="Approve"/>
                     </form>
                     <p class="text-center"><a href="Login.aspx">Or log in here</a></p>
         </main>
