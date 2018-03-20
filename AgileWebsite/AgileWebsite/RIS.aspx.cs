@@ -24,7 +24,7 @@ namespace AgileWebsite
         {
             DB dB = new DB();
             //String query = "SELECT project_ID, project_name, files.file_name, users.first_name, users.last_name, users.department, RIS_ID  FROM PROJECTS  JOIN users ON researcher_ID = users.staff_no  JOIN files ON projects.file_ID = files.file_ID WHERE RIS_accepted = 0 LIMIT 0, 1000";
-            String query = "SELECT project_ID, project_name, files.file_name, users.first_name, users.last_name, users.department, RIS_denied, RIS_ID  FROM PROJECTS  JOIN users ON researcher_ID = users.staff_no  JOIN files ON projects.file_ID = files.file_ID WHERE (RIS_accepted = 0 OR RIS_accepted is NULL)";
+            String query = "SELECT project_ID, project_name, files.file_name, users.first_name, users.last_name, users.department, RIS_denied, RIS_ID  FROM PROJECTS  JOIN users ON researcher_ID = users.staff_no  JOIN files ON projects.file_ID = files.file_ID WHERE (RIS_accepted = 0 OR RIS_accepted is NULL) AND projects.researcher_ID ='" + (string)Session["StaffNo"] + "'";
 
             //CHECK FOR LOGIN
             string LI = (string)(Session["loggedin"]);
@@ -110,6 +110,8 @@ namespace AgileWebsite
             string updateIDSigned = "UPDATE 17agileteam6db.projects SET " + role + "_ID =" + userID + " WHERE project_ID = " + projectID;
             db.Insert(updateSigned);
             db.Insert(updateIDSigned);
+            db.History(projectID, role, "Signed", "Project Has been Signed");
+            db.Email("s.burns@dundee.ac.uk", "Project " + projectID + "awaiting signing");
         }
 
 

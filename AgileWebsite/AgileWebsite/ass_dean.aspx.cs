@@ -97,6 +97,7 @@ namespace AgileWebsite
             string projectID = projID.Text;
             string userID = (string)Session["StaffNo"];
             string role = getRole();
+            MySql.Data.MySqlClient.MySqlDataReader reader;
 
             Button button = (Button)sender;
             DB db = new DB();
@@ -105,6 +106,18 @@ namespace AgileWebsite
             string updateIDSigned = "UPDATE 17agileteam6db.projects SET " + role + "_ID =" + userID + " WHERE project_ID = " + projectID;
             db.Insert(updateSigned);
             db.Insert(updateIDSigned);
+            db.History(projectID, role, "Signed", "Project Has been Signed");
+            string getEmail = "USE 17agileteam6db; " +
+                "SELECT email FROM users INNER JOIN projects ON projects.researcher_ID = staff_no WHERE projects.project_ID = 21 ";
+            reader = db.Select(getEmail);
+
+            while (reader.HasRows && reader.Read())
+            {
+                getEmail = reader.GetString(reader.GetOrdinal("Email"));
+            }
+
+            db.Email(getEmail, "Project " + projectID + " has been approved");
+
         }
 
 
