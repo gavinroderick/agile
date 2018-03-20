@@ -706,6 +706,7 @@
     <Compile Include="tester.aspx.designer.cs">
       <DependentUpon>tester.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Utils.cs" />
     <Compile Include="ViewFinishedProjects.aspx.cs">
       <DependentUpon>ViewFinishedProjects.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

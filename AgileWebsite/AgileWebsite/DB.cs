@@ -58,7 +58,7 @@ namespace AgileWebsite
         }
 
         //Close connection
-        private bool CloseConnection()
+        public bool CloseConnection()
         {
             try
             {

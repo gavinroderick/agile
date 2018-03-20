@@ -7,18 +7,33 @@
        
         <div class="row id-row input-group justify-content-center">
             <div class="col">
-                <asp:Button ID="createButton" runat="server"  class="btn btn-info btn-block"  Value="Create" Text="Create Project" />&nbsp;<br />
+               <a id="createButton" role="button" class="btn btn-success btn-block" >New project</a>
             </div>
             <div class="col">
-                <asp:Button ID="uploadButton" runat="server"  class="btn btn-warning btn-block"  Value="Upload" Text="Upload an Edit" />&nbsp;<br />
+                <a id="editProject" role="button" class="btn btn-warning btn-block">Edit</a>
             </div>
             <div class="col">
-                <asp:Button ID="downloadButton" runat="server" class="btn btn-primary btn-block" Value="Download" Text="Download"/>&nbsp;<br />
+                <a id="downloadingButton" role="button" class="btn btn-dark btn-block" >Download</a>
+            </div>
+            <% if(userRole == "1")
+                { %>
+            <div class="col">
+                <a id="decline" role="button" class="btn btn-danger btn-block" >Decline</a>
             </div>
             <div class="col">
-                <asp:Button ID="approveButton" runat="server" class="btn btn-success btn-block"   Value="Approve" Text="Approve"/>
+                <a id="approve" role="button" class="btn btn-success btn-block" >Approve</a>
             </div>
-        </div><hr />
+            <%} %>
+        </div>
+        <% if (stage == "3" && userRole == "0")
+            { %>
+        <div class="row id-row input-group justify-content-center">
+            <div class="col">
+                <a id="finalApprove" role="button" class="btn btn-success btn-block" >Final sign and approve your funding!</a>
+            </div>
+        </div>
+        <%} %>
+        <hr />
         <h3>Project Information</h3>
         <br />
         <dl class="row">

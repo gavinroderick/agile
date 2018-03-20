@@ -20,7 +20,11 @@ namespace AgileWebsite
         public string email;
 
         public string stage;
+        public string fileName;
+        public string fileUploaded;
+        public int fileSize;
 
+        public string userRole = "999";
         protected void Page_Load(object sender, EventArgs e)
         {
             projectID = Request.QueryString["id"];
@@ -29,16 +33,26 @@ namespace AgileWebsite
                 projectID = "21";
             }
             int projID = int.Parse(projectID);
+            getUserDetails();
 
             getProjectDetails(projID);
             getResearcherDetails(researcherID);
             currentStage = getCurrentStage(projID);
         }
 
+        public void getUserDetails()
+        {
+            string LI = (String)Session["loggedin"];
+            if(LI == "Loggedin")
+            {
+                userRole = (String)Session["role"];
+            }
+        }
         private void getProjectDetails(int projID)
         {
             DB db = new DB();
             string projectQuery = "SELECT * FROM PROJECTS WHERE project_ID = '" + projectID + "';";
+            string fileQuery = "SELECT * FROM FILES WHERE file_id = " + fileID + ";";
             read =  db.Select(projectQuery);
             if (read.HasRows && read.Read())
             {
@@ -48,6 +62,15 @@ namespace AgileWebsite
                 projectName = read.GetString("project_name");
                 dateSubmitted = read.GetString("date_submitted");
             }
+            db.CloseConnection();
+            read = db.Select(fileQuery);
+            if (read.HasRows && read.Read())
+            {
+                fileName = read.GetString("file_name");
+                fileUploaded = (String)read.GetString("date_uploaded");
+                fileSize = read.GetInt32("file_size");
+            }
+
         }
 
         private void getResearcherDetails(string researcherID)
@@ -96,6 +119,7 @@ namespace AgileWebsite
                 return total;
             }
             else return 0;
+           
         }
     }
 }

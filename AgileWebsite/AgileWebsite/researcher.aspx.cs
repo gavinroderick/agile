@@ -11,7 +11,7 @@ namespace AgileWebsite
     public partial class researcher : System.Web.UI.Page
     {
        
-            MySqlDataReader reader;
+        MySqlDataReader reader;
         public String[] data = new String[1];
         public String[] projectID = new String[1];
         public String[] projectName = new string[1];
