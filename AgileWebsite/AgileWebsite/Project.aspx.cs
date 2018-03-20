@@ -9,13 +9,8 @@ namespace AgileWebsite
 {
     public partial class Project : System.Web.UI.Page
     {
-        string projectID;
-        int fileID;
-        string researcherID;
-        string projectInfo;
-        string dateSubmitted;
         string projectName;
-
+        string projectID;
         protected void Page_Load(object sender, EventArgs e)
         {
             projectID = Request.QueryString["id"];
@@ -23,18 +18,13 @@ namespace AgileWebsite
             {
                 projectID = "21";
             }
+            int.Parse(projectID);
 
-            int projID = int.Parse(projectID);
-
-            getProjectDetails(projID);
         }
 
-        private void getProjectDetails(int projectID)
+        private void getProjectDetails()
         {
-            DB db = new DB();
 
-            string projectQuery = "SELECT * FROM PROJECTS WHERE project_ID =" + projectID;
-            db.Select(projectQuery);
         }
     }
 }
