@@ -31,17 +31,17 @@ namespace AgileWebsite.Tests
         {
             try
             {
-                MailMessage mail = new MailMessage("team6agile@gmail.com", toEmail);
-                SmtpClient client = new SmtpClient("smtp.gmail.com")
+                MailMessage mail = new MailMessage("team6agile@gmail.com", toEmail); //Creates Email
+                SmtpClient client = new SmtpClient("smtp.gmail.com") // Sets to be sent from Gmail.
                 {
-                    Port = 587,
-                    Credentials = new System.Net.NetworkCredential("team6agile@gmail.com", "AgileTeam6"),
+                    Port = 587, 
+                    Credentials = new System.Net.NetworkCredential("team6agile@gmail.com", "AgileTeam6"), //Gmail Account Credentials
                     EnableSsl = true
 
                 };
-                mail.Subject = "this is a test email.";
+                mail.Subject = "this is a test email."; 
                 mail.Body = message;
-                client.Send(mail);
+                client.Send(mail); // Sends Email
                 return true;
             }
             catch

@@ -31,6 +31,13 @@ namespace AgileWebsite
             {
                 Response.Redirect("Index.aspx", false);
             }
+            else  //CHECK & ENSURE USER IS RESEARCHER
+            {
+                DB db = new DB();
+                string staffID = (string)(Session["StaffNo"]);
+
+                Redirect(getDetails(db, staffID));
+            }
 
             int i = 0;
 
@@ -93,6 +100,36 @@ namespace AgileWebsite
             }
         }
 
+        private string getDetails(DB db, string staffID)
+        {
+            string roleQuery = "SELECT first_name, last_name, department, role from 17agileteam6db.users WHERE staff_no = '" + staffID + "';";
+            reader = db.Select(roleQuery);
+            reader.Read();
+            return reader.GetString("role");
+        }
+
+        private void Redirect(string role)
+        {
+            switch (role)
+            {
+                case "0":
+                    Response.Redirect("Researcher.aspx");
+                    break;
+                case "1":
+                    Response.Redirect("ris.aspx");
+                    break;
+                case "2":
+                    Response.Redirect("ass_dean.aspx");
+                    break;
+                case "3":
+                    //Response.Redirect("dean.aspx");
+                    break;
+                default:
+                    Response.Redirect("Default.aspx");
+                    break;
+            }
+        }
+
         protected void Accepted(object sender, EventArgs e)
         {
             string projectID = projID.Text;
@@ -106,6 +143,8 @@ namespace AgileWebsite
             string updateIDSigned = "UPDATE 17agileteam6db.projects SET " + role + "_ID =" + userID + " WHERE project_ID = " + projectID;
             db.Insert(updateSigned);
             db.Insert(updateIDSigned);
+            db.History(Int32.Parse(projectID), role, "Signed", "Project Has been Signed");
+            db.Email("b.hefner@dundee.ac.uk", "Project " + projectID + "awaiting signing");
         }
 
 

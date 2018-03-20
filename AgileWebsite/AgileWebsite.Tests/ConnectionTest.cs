@@ -8,6 +8,7 @@ namespace AgileWebsite.Tests
     public class ConnectionTest
     {
         [TestMethod]
+        //tests if the connection is made
         public void TestOpenConnection()
         {
             DBTest db = new DBTest();

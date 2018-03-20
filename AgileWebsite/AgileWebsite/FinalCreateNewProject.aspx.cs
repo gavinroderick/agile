@@ -239,6 +239,7 @@ namespace AgileWebsite
                     string action = "Upload";
                     string query3 = "INSERT INTO 17agileteam6db.history (project_ID, user, date_time, projectAction, Comments) VALUES ((SELECT MAX(project_id) FROM 17agileteam6db.projects), '" + user + "', NOW(), '" + action + "', '" + comment + "')";
                     db.Insert(query3);
+                    db.Email("d.Kelly@dundee.ac.uk", "New Project awaiting signing");
                     ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
