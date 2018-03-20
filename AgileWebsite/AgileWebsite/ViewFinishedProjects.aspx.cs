@@ -25,7 +25,7 @@ namespace AgileWebsite
         protected void Page_Load(object sender, EventArgs e)
         {
             DB database = new DB();
-            String query = "SELECT users.first_name, users.last_name, users.department, projects.project_name, projects.RIS_accepted, projects.ass_dean_accepted, projects.dean_accepted, files.file_name FROM users, projects, files WHERE projects.RIS_accepted IS NOT NULL AND projects.ass_dean_accepted IS NOT NULL AND projects.dean_accepted IS NOT NULL AND users.staff_no = projects.researcher_ID AND files.file_ID = projects.file_ID; ";
+            String query = "SELECT users.first_name, users.last_name, users.department, projects.project_name, projects.RIS_accepted, projects.ass_dean_accepted, projects.dean_accepted, files.file_name FROM users, projects, files WHERE projects.RIS_accepted = 1 AND projects.ass_dean_accepted = 1 AND projects.dean_accepted = 1 AND users.staff_no = projects.researcher_ID AND files.file_ID = projects.file_ID; ";
 
             //CHECK FOR LOGIN
             string LI = (string)(Session["loggedin"]);
