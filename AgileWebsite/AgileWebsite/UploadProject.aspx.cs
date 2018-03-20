@@ -16,7 +16,12 @@ namespace AgileWebsite
     {
         void Page_Load(Object sender, EventArgs e)
         {
-        
+            //CHECK FOR LOGIN
+            string LI = (string)(Session["loggedin"]);
+            if (LI != "Loggedin")
+            {
+                Response.Redirect("Index.aspx", false);
+            }
         }
 
         public bool UploadToDatabase()

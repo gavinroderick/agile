@@ -15,7 +15,12 @@ namespace AgileWebsite
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            //CHECK FOR LOGIN
+            string LI = (string)(Session["loggedin"]);
+            if (LI != "Loggedin")
+            {
+                Response.Redirect("Index.aspx", false);
+            }
         }
 
         protected void Button1_Click(object sender, EventArgs e)
