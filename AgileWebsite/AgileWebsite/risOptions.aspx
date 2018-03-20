@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="RIS Options" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="risOptions.aspx.cs" Inherits="AgileWebsite.risOptions" %>
 
+<!-- This page allows RIS to select what they want to do -->
 <asp:Content ID="Content" ContentPlaceHolderID="MainContent" runat="server">
 
     Which list do you want to see? <br/>

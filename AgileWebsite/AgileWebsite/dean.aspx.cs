@@ -10,6 +10,7 @@ namespace AgileWebsite
 {
     public partial class Dean : System.Web.UI.Page
     {
+        //Sets variables in array
         MySqlDataReader reader;
         public String[] data = new String[1];
         public String[] projectID = new String[1];
@@ -21,6 +22,7 @@ namespace AgileWebsite
         public String[] risID = new String[1];
         protected void Page_Load(object sender, EventArgs e)
         {
+            //Adds entry to database
             DB dB = new DB();
             String query = "SELECT project_ID, project_name, files.file_name, users.first_name, users.last_name, users.department, RIS_ID  FROM PROJECTS  JOIN users ON researcher_ID = users.staff_no  JOIN files ON projects.file_ID = files.file_ID WHERE (dean_accepted = 0 OR dean_accepted is NULL) AND ass_dean_accepted = 1";
 
@@ -31,7 +33,7 @@ namespace AgileWebsite
             {
                 Response.Redirect("Index.aspx", false);
             }
-            else  //CHECK & ENSURE USER IS RESEARCHER
+            else  //Ensure that user is a Dean
             {
                 DB db = new DB();
                 string staffID = (string)(Session["StaffNo"]);
@@ -42,6 +44,7 @@ namespace AgileWebsite
             int i = 0;
 
             try
+                // Breaks up the query into seperate variables stored in array
             {
                 reader = dB.Select(query);
                 if (reader.HasRows)
@@ -72,8 +75,8 @@ namespace AgileWebsite
             for (int j = 0; j < i; j++)
             {
                 System.Diagnostics.Debug.WriteLine("++++++++++++++++++++++++++++++++++");
-                //System.Diagnostics.Debug.WriteLine(data[j]);
-
+                
+                //Resizes arrays based on hpw many projects are added
                 Array.Resize<String>(ref projectID, j + 1);
                 Array.Resize<String>(ref projectName, j + 1);
                 Array.Resize<String>(ref fileName, j + 1);
@@ -99,7 +102,7 @@ namespace AgileWebsite
 
             }
         }
-
+        //Gets details of staff, what role they are based on ID number
         private string getDetails(DB db, string staffID)
         {
             string roleQuery = "SELECT first_name, last_name, department, role from 17agileteam6db.users WHERE staff_no = '" + staffID + "';";
@@ -108,6 +111,7 @@ namespace AgileWebsite
             return reader.GetString("role");
         }
 
+        //Redirects user to correct page based on role
         private void Redirect(string role)
         {
             switch (role)
@@ -130,6 +134,7 @@ namespace AgileWebsite
             }
         }
 
+        //Method which allows dean to approve a project
         protected void Accepted(object sender, EventArgs e)
         {
             string projectID = projID.Text;
@@ -147,7 +152,7 @@ namespace AgileWebsite
             db.Email("b.hefner@dundee.ac.uk", "Project " + projectID + "awaiting signing");
         }
 
-
+        //Checks Role
         private string getRole()
         {
             string role = (string)Session["role"];
@@ -163,13 +168,14 @@ namespace AgileWebsite
             return " ";
         }
 
+        //Redirects to upload page
         public void Upload(object sender, System.EventArgs e)
         {
             string projectID = projID.Text;
             Response.Redirect("~/UploadProject.aspx");
         }
 
-
+        //Redirects to download page
         public void Download(object sender, System.EventArgs e)
         {
             string projectID = projID.Text;

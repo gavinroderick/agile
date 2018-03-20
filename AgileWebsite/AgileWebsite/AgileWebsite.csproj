@@ -321,9 +321,12 @@
     <Content Include="Content\img\DJCAD.png" />
     <Content Include="Content\img\Education-Social-Work.png" />
     <Content Include="Content\img\Humanities.png" />
+    <Content Include="Content\img\approved.png" />
     <Content Include="Content\img\Life-Sciences.png" />
+    <Content Include="Content\img\denied.png" />
     <Content Include="Content\img\Medicine-Dentistry-Nursing.png" />
     <Content Include="Content\img\Social-Sciences.png" />
+    <Content Include="Content\img\pending.png" />
     <Content Include="Content\img\SSE.png" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\cover.css" />

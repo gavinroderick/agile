@@ -11,9 +11,11 @@ namespace AgileWebsite
 {
     public partial class FinalCreateNewProject : System.Web.UI.Page
     {
+        //DECLARE VARIABLES NEEDED WITHIN THE WHOLE CLASS
         protected string MyString;
         MySqlDataReader reader;
 
+        //UPON PAGE LOAD CHECK THE USER IS LOGGED IN & THEY ARE A RESEARCHER - REDIRECT IF NOT
         protected void Page_Load(object sender, EventArgs e)
         {
             //CHECK FOR LOGIN
@@ -31,6 +33,7 @@ namespace AgileWebsite
             }
         }
 
+        //PRIVATE METHOD - GETS & RETURNS THE ROLE OF THE CURRENTLY LOGGED IN USER (AS A STRING)
         private string getDetails(DB db, string staffID)
         {
             string roleQuery = "SELECT first_name, last_name, department, role from 17agileteam6db.users WHERE staff_no = '" + staffID + "';";
@@ -39,12 +42,13 @@ namespace AgileWebsite
             return reader.GetString("role");
         }
 
+        //CONTROLS REDIRECTING THE USER, IN THE CASE THAT THEY ARE NOT A RESEARCHER (USING THEIR ROLE)
         private void Redirect(string role)
         {
             switch (role)
             {
                 case "0":
-                    //Response.Redirect("FinalCreateNewProject.aspx");
+                    //Response.Redirect("Researcher.aspx");
                     break;
                 case "1":
                     Response.Redirect("ris.aspx");
@@ -61,18 +65,21 @@ namespace AgileWebsite
             }
         }
 
+        //CONTROLS THE UPLOADING OF A FILE TO THE DB WHEN THE UPLOAD BUTTON IS CLICKED
         protected void Button1_Click(object sender, EventArgs e)
         {
             string query;
             DB db = new DB();
-            if (FileUpload1.HasFile)
-            try
-            {
+            if (FileUpload1.HasFile)    //if a file was specified do this
+                try
+                {
+                    //get filename
                     string fn = System.IO.Path.GetFileName(FileUpload1.PostedFile.FileName);
 
                     //validate file extention to ensure the page only accepts excel files
                     string fnExtention = System.IO.Path.GetExtension(fn);
 
+                    //return from method if the chosen file is not in excel format (error message)
                     if (fnExtention != ".xlsx")
                     {
                         Label1.ForeColor = System.Drawing.Color.Red;
@@ -81,17 +88,19 @@ namespace AgileWebsite
                     }
                     Label1.ForeColor = System.Drawing.Color.White;
 
-                    //ensure there is a user logged in
-                    if (Session["loggedin"]== null)
+                    //ensure there is a user logged in (otherwise return)
+                    if (Session["loggedin"] == null)
                     {
                         Label1.ForeColor = System.Drawing.Color.Red;
                         Label1.Text = "Please Log in to successfully upload a file.";
                         return;
                     }
-                    
 
+                    //get file path
                     string SaveLocation = Server.MapPath("~/Projects/" + fn);
 
+                    //Get the time/date in the correct specified format in order to suuccessfully
+                    //input this date/time into the database
                     string month = DateTime.Now.Month.ToString();
                     int monthInt = Int32.Parse(month);
                     if (monthInt < 10)
@@ -117,6 +126,7 @@ namespace AgileWebsite
                         minute = "0" + minuteInt;
                     }
 
+                    //store correct date + time in a string variable
                     string dateTimeCorrectFormat = DateTime.Now.Year + "-" + month + "-" + day + " " + hour + ":" + minute;
 
                     Label2.Text = FileUpload1.FileName;
@@ -136,24 +146,26 @@ namespace AgileWebsite
 
 
 
-
+                    //Get file length & create a byte array variable of that length to store the uploaded file in
                     int FileLen = FileUpload1.PostedFile.ContentLength;
                     byte[] input = new byte[FileLen];
                     System.IO.Stream MyStream = FileUpload1.PostedFile.InputStream;
                     using (var binaryReader = new BinaryReader(MyStream))
                     {
+                        //This actually stores the uploaded file in variable 'input'
                         input = binaryReader.ReadBytes((int)MyStream.Length);
                     }
 
-
+                    //opens a database connection
                     db.OpenConnectionForScott();
 
-                    //Console.Write("I got Here");
-
-
+                    //query string for insertion to files table
                     query = "INSERT INTO files (file_name, date_uploaded, actual_file, file_size) VALUES (@fn,@dateTimeCorrectFormat,@input,@inputLength)";
+
+                    //query string for insertion to projects table
                     string query2 = "INSERT INTO projects (file_ID, researcher_ID, project_info, date_submitted, project_name, RIS_ID, ass_dean_ID, dean_ID) VALUES ((SELECT MAX(file_id) FROM 17agileteam6db.files), @username, @projInfo, @dateSub, @projName, '0', '0', '0')";
 
+                    //creates the command using the query string, adds parameters and then executes the database insertion for the files table
                     MySqlCommand c = new MySqlCommand(query, db.GetConnectionStringForScott());
                     c.Parameters.AddWithValue("@fn", fn);
                     c.Parameters.AddWithValue("@dateTimeCorrectFormat", dateTimeCorrectFormat);
@@ -161,6 +173,7 @@ namespace AgileWebsite
                     c.Parameters.AddWithValue("@inputLength", input.Length);
                     int i = c.ExecuteNonQuery();
 
+                    //creates the command using the query string, adds parameters and then executes the database insertion for the projects table
                     MySqlCommand c2 = new MySqlCommand(query2, db.GetConnectionStringForScott());
                     c2.Parameters.AddWithValue("@username", Session["StaffNo"].ToString());
                     c2.Parameters.AddWithValue("@projInfo", ProjectInfo.Text);
@@ -168,6 +181,7 @@ namespace AgileWebsite
                     c2.Parameters.AddWithValue("@projName", ProjectName.Text);
                     int z = c2.ExecuteNonQuery();
 
+                    //closes the database connection
                     db.CloseConnectionForScott();
 
 
@@ -178,11 +192,11 @@ namespace AgileWebsite
                     //ATTEMPT 1
                     ////////////////////////////////////////////////////////////////////////////////
 
-                        /*MyStream.Read(input, 0, FileLen);
-                    
-                    for (int Loop1 = 0; Loop1 < FileLen; Loop1++)
-                        
-                        MyString = MyString + input[Loop1].ToString();*/
+                    /*MyStream.Read(input, 0, FileLen);
+
+                for (int Loop1 = 0; Loop1 < FileLen; Loop1++)
+
+                    MyString = MyString + input[Loop1].ToString();*/
                     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                     //REFRACTORED - ATTEMPT 2
 
@@ -224,6 +238,11 @@ namespace AgileWebsite
 
                     //FileUpload1.SaveAs(SaveLocation);
 
+
+                    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+                    //OUTPUT MESSAGE BELOW IS FOR ERROR HANDLING - SHOULD NOT BE SHOWN IN FINAL PROJECT (HARMLESS TO LEAVE IN)
+
                     Label1.Text = "File name: " +
                      FileUpload1.PostedFile.FileName + "<br>" +
                      FileUpload1.PostedFile.ContentLength + " kb<br>" +
@@ -234,6 +253,8 @@ namespace AgileWebsite
 
                     /////////////////////////////////////////////////////////////////////////////////////////////////////
 
+                    //PERFORMS AN INSERTION TO THE HISTORY TABLE IN THE DATABASE AND THE EMAILING TO THE RIS STAFF
+
                     string user = Session["StaffNo"].ToString();
                     string comment = "Uploaded the file";
                     string action = "Upload";
@@ -242,20 +263,17 @@ namespace AgileWebsite
                     db.Email("d.Kelly@dundee.ac.uk", "New Project awaiting signing");
                     ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-
-
-
-
-                    //Response.BufferOutput = true;
+                    //REDIRECTS ONCE THE PROJECT IS SUCCESSFULLY CREATED
                     Response.Redirect("Index.aspx", false);
                 }
-            catch (Exception ex)
-            {
+                catch (Exception ex)
+                {
+                    //SHOWS EXECPTION MESSAGE ON PAGE IN THE CASE THERE IS ONE
                     Label1.Text = "ERROR: " + ex.Message.ToString();
-            }
+                }
             else
             {
+                //DISPLAYED IF THE USER DOES NOT SPECIFY A FILE TO BE UPLOADED
                 Label1.Text = "You have not specified a file.";
             }
         }

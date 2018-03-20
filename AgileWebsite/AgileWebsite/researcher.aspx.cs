@@ -19,13 +19,22 @@ namespace AgileWebsite
         public String[] firstName = new String[1];
         public String[] lastName = new String[1];
         public String[] department = new String[1];
-        public String[] risID = new String[1];
-       
+        public String[] RIS_accepted = new String[1];
+        public String[] ass_dean_accepted = new String[1];
+        public String[] dean_accepted = new String[1];
+        public String[] RIS_denied = new String[1];
+
+
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
             DB dB = new DB();
                     
-            String query = "SELECT project_ID, project_name, files.file_name, users.first_name, users.last_name, users.department, RIS_ID  FROM PROJECTS  JOIN users ON researcher_ID = users.staff_no  JOIN files ON projects.file_ID = files.file_ID WHERE (RIS_accepted = 0 OR RIS_accepted is NULL) AND projects.researcher_ID ='" + (string)Session["StaffNo"] + "'";
+            String query = "SELECT project_ID, project_name, files.file_name, users.first_name, users.last_name, users.department, projects.RIS_accepted, projects.ass_dean_accepted, projects.dean_accepted, projects.RIS_denied  FROM PROJECTS  JOIN users ON researcher_ID = users.staff_no  JOIN files ON projects.file_ID = files.file_ID WHERE projects.researcher_ID ='" + (string)Session["StaffNo"] + "'";
+            //(RIS_accepted = 0 OR RIS_accepted is NULL)
+
+            //  String queryImage = "SELECT RIS_accepted, ass_dean_accepted, dean_accepted FROM projects";
 
             //CHECK FOR LOGIN
             string LI = (string)(Session["loggedin"]);
@@ -50,7 +59,7 @@ namespace AgileWebsite
                 {
                     while (reader.Read())
                     {
-                        for (int n = 0; n < 6; n++)
+                        for (int n = 0; n < 10; n++)
                         {
                             data[i] += reader.GetString(n) + ',';
                         }
@@ -82,7 +91,13 @@ namespace AgileWebsite
                 Array.Resize<String>(ref firstName, j + 1);
                 Array.Resize<String>(ref lastName, j + 1);
                 Array.Resize<String>(ref department, j + 1);
-                Array.Resize<String>(ref risID, j + 1);
+                Array.Resize<String>(ref RIS_accepted, j + 1);
+                Array.Resize<String>(ref ass_dean_accepted, j + 1);
+                Array.Resize<String>(ref dean_accepted, j + 1);
+                Array.Resize<String>(ref RIS_denied, j + 1);
+
+
+
                 System.Diagnostics.Debug.WriteLine(data[j]);
                 String[] words = data[j].Split(',');
                 projectID[j] = words[0];
@@ -91,6 +106,10 @@ namespace AgileWebsite
                 firstName[j] = words[3];
                 lastName[j] = words[4];
                 department[j] = words[5];
+                RIS_accepted[j] = words[6];
+                ass_dean_accepted[j] = words[7];
+                dean_accepted[j] = words[8];
+                RIS_denied[j] = words[9];
                 //risID[j] = words[6];
                 System.Diagnostics.Debug.WriteLine(projectID[j]);
                 System.Diagnostics.Debug.WriteLine(projectName[j]);
@@ -228,6 +247,11 @@ namespace AgileWebsite
             string projectID = projID.Text;
             Response.Redirect("~/DownloadProjectPage.aspx");
         }
+
+
+       
+
     }
+
 }
     

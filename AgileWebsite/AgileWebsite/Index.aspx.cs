@@ -5,7 +5,6 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
 namespace AgileWebsite
 {
     public partial class WebForm2 : System.Web.UI.Page
@@ -39,6 +38,7 @@ namespace AgileWebsite
             return reader.GetString("role");
         }
 
+        //Redirects to approprate homepage
         private void Redirect(string role)
         {
             switch (role)

@@ -30,12 +30,13 @@
         <%for (int m = 0; m < data.Count()-1; m++) {  %>
             
              
-            <div class="card" style="margin-left: 5px; margin-right: 5px;">
+            <div class="card" style="margin-left: 7px; margin-right: 7px;">
 
                
                 <div class="container" style="text-align: center; position:relative;">
-                    <img class="card-img-top" src="/Content/img/<%=department[m]%>.png" >
-                    <div class="centered" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"><%=department[m]%></div>
+                    <br />
+                    <img class="card-img-top" src="/Content/img/<%=department[m]%>.png" alt="<%=department[m]%>" >
+                    <div class="centered" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-weight:bold; font-size:x-large;"><%=department[m]%></div>
                     </div>
                
                 <div class="card-body" >

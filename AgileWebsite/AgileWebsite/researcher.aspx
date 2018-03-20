@@ -30,8 +30,42 @@
             
              
             <div class="card" style="margin-left: 5px; margin-right: 5px;">
-                <img class="card-img-top" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22286%22%20height%3D%22180%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20286%20180%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_16240223432%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A14pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_16240223432%22%3E%3Crect%20width%3D%22286%22%20height%3D%22180%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22107.203125%22%20y%3D%2296.3%22%3E286x180%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" alt="test image pls ignore" >
-                  
+
+                 <div class="container" style="text-align: center; position:relative;">
+                    <br />
+                     <%if (dean_accepted[m] == "True")
+                         {%>
+                            <img class="card-img-top" src="/Content/img/approved.png" alt="approved" >
+                            <div class="centered" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-weight:bold; font-size:x-large;">Request Approved</div>
+                     <%}
+                       else if (ass_dean_accepted[m] == "True")
+                       {%>
+                            <img class="card-img-top" src="/Content/img/pending.png" alt="pending dean approval" >
+                            <div class="centered" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-weight:bold; font-size:x-large;">Pending Dean Approval</div>
+
+                      <%}
+                       else if (RIS_accepted[m] == "1")
+                       { %>
+                            <img class="card-img-top" src="/Content/img/pending.png" alt="pending assistant dean approval" >
+                            <div class="centered" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-weight:bold; font-size:x-large;">Pending  Assistant Dean Approval</div>
+                       <%}
+                       else if (RIS_accepted[m] == "0")
+                       { %>
+                            <img class="card-img-top" src="/Content/img/pending.png" alt="pending assistant RIS approval" >
+                            <div class="centered" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-weight:bold; font-size:x-large;">Pending RIS Approval</div>
+                       <%}
+                       else if (RIS_denied[m] == "True")
+                       { %>
+                            <img class="card-img-top" src="/Content/img/denied.png" alt="Request Denied" >
+                            <div class="centered" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-weight:bold; font-size:x-large;">Request Denied</div>
+                       <%} %>
+
+
+
+
+
+                    
+                    </div>
                 <div class="card-body" >
                    
                         <div class="col">
