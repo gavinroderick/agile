@@ -48,7 +48,18 @@
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="department">Department</label>
-                                <asp:TextBox ID="department" runat="server" CssClass="form-control" Placeholder="Department" required=true />
+                               
+                                
+                                <asp:DropDownList ID="dprtmnt" runat="server" CssClass="form-control" >
+                                    <asp:ListItem>Choose...</asp:ListItem>
+                                    <asp:ListItem Value="DJCAD">DJCAD</asp:ListItem>
+                                    <asp:ListItem Value="Education-Social-Work">Education-Social-Work</asp:ListItem>
+                                    <asp:ListItem Value="Humanities">Humanities</asp:ListItem>
+                                    <asp:ListItem Value="Life-Sciences">Life-Sciences</asp:ListItem>
+                                    <asp:ListItem Value="Medicine-Dentistry-Nursing">Medicine-Dentistry-Nursing</asp:ListItem>
+                                    <asp:ListItem Value="Social-Sciences">Social-Sciences</asp:ListItem>
+                                    <asp:ListItem Value="SSE">SSE</asp:ListItem>
+                                </asp:DropDownList>
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="inputRole">Role</label>
