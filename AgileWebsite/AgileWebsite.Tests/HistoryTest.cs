@@ -27,13 +27,14 @@ namespace AgileWebsite.Tests
 
 
         [TestMethod]
+        //Uploads to history Table
         public void TestHistoryUpload()
     {
             DBTest db = new DBTest();
             string user = "99C009";
             string comment = "Uploaded the file";
             int project_ID = 3;
-            string action = "Upload";
+            string action = "Upload"; 
             string query = "INSERT INTO 17agileteam6db.history (project_ID, user, Historycol, date_time, projectAction, Comments) VALUES (" + project_ID + ", '" + user + "', ' ', NOW(), '" + action + "', '" + comment + "')";
 
             bool insert = db.Insert(query);

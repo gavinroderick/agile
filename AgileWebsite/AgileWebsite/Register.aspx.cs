@@ -24,6 +24,7 @@ namespace AgileWebsite
                 Redirect(getDetails(db, staffID));
             }
         }
+        //Checks if details are correct
         protected void Accepted(object sender, EventArgs e)
         {
             string sn = staffNo.Text;
@@ -37,13 +38,15 @@ namespace AgileWebsite
 
             DB db = new DB();
 
+
             string query = "INSERT INTO 17agileteam6db.users(staff_no, first_name, last_name, email, department, role, pass) " +
                            "VALUES('" + sn + "'," + "'" + fn + "'," + "'" + ln + "'," + "'" + email + "'," + "'" + dept + "'," + r + "," + "'" + pass + "');";
 
-            db.Insert(query);
+            db.Insert(query); //registers user
             Response.Redirect("Login.aspx");
         }
 
+        //gets Details
         private string getDetails(DB db, string staffID)
         {
             string roleQuery = "SELECT first_name, last_name, department, role from 17agileteam6db.users WHERE staff_no = '" + staffID + "';";
@@ -52,6 +55,7 @@ namespace AgileWebsite
             return reader.GetString("role");
         }
 
+        //Redirects to appropriate page
         private void Redirect(string role)
         {
             switch (role)
