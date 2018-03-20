@@ -9,22 +9,32 @@ namespace AgileWebsite
 {
     public partial class Project : System.Web.UI.Page
     {
-        string projectName;
         string projectID;
+        int fileID;
+        string researcherID;
+        string projectInfo;
+        string dateSubmitted;
+        string projectName;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             projectID = Request.QueryString["id"];
-            if (projID == null)
+            if (projectID == null)
             {
-                projID = "21";
+                projectID = "21";
             }
-            int.Parse(projID);
 
+            int projID = int.Parse(projectID);
+
+            getProjectDetails(projID);
         }
 
-        private void getProjectDetails()
+        private void getProjectDetails(int projectID)
         {
+            DB db = new DB();
 
+            string projectQuery = "SELECT * FROM PROJECTS WHERE project_ID =" + projectID;
+            db.Select(projectQuery);
         }
     }
 }
