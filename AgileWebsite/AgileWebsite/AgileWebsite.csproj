@@ -224,6 +224,7 @@
     <Content Include="docs\MySqlParameter.xml" />
     <Content Include="docs\MySqlParameterCollection.xml" />
     <Content Include="docs\MySqlTransaction.xml" />
+    <Content Include="historyTable.aspx" />
     <Content Include="researcherOptions.aspx" />
     <Content Include="risOptions.aspx" />
     <Content Include="UploadProject.aspx" />
@@ -443,6 +444,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="historyTable.aspx.cs">
+      <DependentUpon>historyTable.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="historyTable.aspx.designer.cs">
+      <DependentUpon>historyTable.aspx</DependentUpon>
     </Compile>
     <Compile Include="researcherOptions.aspx.cs">
       <DependentUpon>researcherOptions.aspx</DependentUpon>
