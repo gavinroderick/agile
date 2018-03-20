@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,9 +10,19 @@ namespace AgileWebsite
 {
     public partial class Register : System.Web.UI.Page
     {
+        MySqlDataReader reader;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            //CHECK FOR LOGIN
+            string LI = (string)(Session["loggedin"]);
+            if (LI == "Loggedin")
+            {
+                DB db = new DB();
+                string staffID = (string)(Session["StaffNo"]);
+
+                Redirect(getDetails(db, staffID));
+            }
         }
         protected void Accepted(object sender, EventArgs e)
         {
@@ -31,6 +42,36 @@ namespace AgileWebsite
 
             db.Insert(query);
             Response.Redirect("Login.aspx");
+        }
+
+        private string getDetails(DB db, string staffID)
+        {
+            string roleQuery = "SELECT first_name, last_name, department, role from 17agileteam6db.users WHERE staff_no = '" + staffID + "';";
+            reader = db.Select(roleQuery);
+            reader.Read();
+            return reader.GetString("role");
+        }
+
+        private void Redirect(string role)
+        {
+            switch (role)
+            {
+                case "0":
+                    Response.Redirect("Researcher.aspx");
+                    break;
+                case "1":
+                    Response.Redirect("ris.aspx");
+                    break;
+                case "2":
+                    Response.Redirect("ass_dean.aspx");
+                    break;
+                case "3":
+                    Response.Redirect("dean.aspx");
+                    break;
+                default:
+                    Response.Redirect("Default.aspx");
+                    break;
+            }
         }
 
     }
